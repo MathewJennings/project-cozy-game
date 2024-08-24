@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8cdbe5bfe105b45b6191e7261fe7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wateredSprite: {fileID: 21300000, guid: 3555a372102ce3f4ea71ec9b83d6ca46, type: 3}
 --- !u!114 &5363409609106189487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa11978b8a25c246aa664c3a66a1a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 2f081b3476e644e45b68a402aa6f4117, type: 3}
+  - {fileID: 21300000, guid: 195c7ceafe93b9443b273d2000402343, type: 3}
+  - {fileID: 21300000, guid: 713fc3d7f13ba90449c583818331a333, type: 3}
+  - {fileID: 21300000, guid: 60e83db487ba378449c207f8aedb828a, type: 3}
+  - {fileID: 21300000, guid: 9f0b2c10927c89b48a1d983ffff1587c, type: 3}

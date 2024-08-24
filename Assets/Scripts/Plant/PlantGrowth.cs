@@ -2,30 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlantGrowth : MonoBehaviour
 {
+    [SerializeField]
+    private Sprite[] sprites;
     enum GrowthStage { Seed, SmallSapling, BigSapling, Plant, Harvestable}
 
     private GrowthStage currentGrowthStage;
-    private ReceiveWater receiveWater;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
-        currentGrowthStage = GrowthStage.Seed;
-        receiveWater = GetComponent<ReceiveWater>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        UpdateGrowthStage(GrowthStage.Seed);
     }
 
     public void NotifyShouldGrow()
     {
-        AdvanceGrowthStage();
+        UpdateGrowthStage(currentGrowthStage < GrowthStage.Harvestable ? currentGrowthStage + 1 : currentGrowthStage);
     }
 
-    private void AdvanceGrowthStage()
+    private void UpdateGrowthStage(GrowthStage newGrowthStage)
     {
-        if (currentGrowthStage != GrowthStage.Harvestable)
-        {
-            currentGrowthStage++;
-        }
+        currentGrowthStage = newGrowthStage;
+        spriteRenderer.sprite = sprites[(int)currentGrowthStage];
     }
 }

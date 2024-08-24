@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IWaterReceivable
 {
+    public bool IsWatered();
     public void ReceiveWater();
 
 }

@@ -6,15 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(PlantGrowth))]
 public class ReceiveWater : MonoBehaviour, IWaterReceivable, ITimeObserver
 {
-    [SerializeField]
-    private Sprite wateredSprite;
 
-    private Sprite unwateredSprite;
     private bool isWatered;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         FindObjectOfType<TimeAdvancer>().RegisterObserver(this);
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnDestroy()
@@ -32,11 +31,10 @@ public class ReceiveWater : MonoBehaviour, IWaterReceivable, ITimeObserver
     }
 
    void IWaterReceivable.ReceiveWater()
-    {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        unwateredSprite = spriteRenderer.sprite;
-        spriteRenderer.sprite = wateredSprite;
+   {
         isWatered = true;
+        // Darken the sprite because it is wet
+        spriteRenderer.color = new Color(0.75f, 0.75f, 0.75f);
     }
 
     public void NotifyNewDayStarted()
@@ -44,11 +42,9 @@ public class ReceiveWater : MonoBehaviour, IWaterReceivable, ITimeObserver
         if (isWatered)
         {
             GetComponent<PlantGrowth>().NotifyShouldGrow();
-        }
-        isWatered = false;
-        if (unwateredSprite != null)
-        {
-            GetComponent<SpriteRenderer>().sprite = unwateredSprite;
+            isWatered = false;
+            // Brighten the sprite because it is dry
+            spriteRenderer.color = Color.white;
         }
     }
 
