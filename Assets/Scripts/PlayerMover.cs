@@ -31,6 +31,6 @@ public class PlayerMover : MonoBehaviour
         {
             translationVector += Vector3.right;
         }
-        gameObject.transform.position += translationVector.normalized * speedMultiplier;
+        gameObject.transform.position += translationVector.normalized * speedMultiplier * Time.deltaTime;
     }
 }
