@@ -19,7 +19,11 @@ public class SunMover : MonoBehaviour, ITimeObserver
 
     private void OnDestroy()
     {
-        FindObjectOfType<TimeAdvancer>().DeregisterObserver(this);
+        TimeAdvancer timeAdvancer = FindObjectOfType<TimeAdvancer>();
+        if (timeAdvancer != null)
+        {
+            timeAdvancer.DeregisterObserver(this);
+        }
     }
 
     public void NotifyNewDayStarted()
