@@ -24,12 +24,7 @@ public class ReceiveWater : MonoBehaviour, IWaterReceivable, ITimeObserver
         }
     }
 
-    public bool IsActive()
-    {
-        return isActiveAndEnabled;
-    }
-
-    void IWaterReceivable.ReceiveWater()
+   void IWaterReceivable.ReceiveWater()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         unwateredSprite = spriteRenderer.sprite;

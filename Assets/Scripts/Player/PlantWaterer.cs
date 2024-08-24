@@ -22,12 +22,10 @@ public class PlantWaterer : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(gameObject.transform.position, 2f);
         foreach (Collider2D collider in hitColliders)
         {
-            if (collider.gameObject.TryGetComponent(out IWaterReceivable waterReceivable))
+            IWaterReceivable waterReceivable = collider.gameObject.GetComponentInChildren<IWaterReceivable>();
+            if (waterReceivable != null)
             {
-                if (waterReceivable.IsActive())
-                {
-                    return waterReceivable;
-                }
+                return waterReceivable;
             }
         }
         return null;

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPlantReceivable
 {
-    public void ReceivePlant();
+    public void ReceivePlant(GameObject plant);
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public interface IWaterReceivable
 {
-    public bool IsActive();
     public void ReceiveWater();
 
 }
