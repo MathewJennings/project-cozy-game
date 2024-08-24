@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(ReceiveWater))]
 public class ReceivePlant : MonoBehaviour, IPlantReceivable
 {
 
     [SerializeField]
     private Sprite seededSprite;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool hasPlant;
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     void IPlantReceivable.ReceivePlant()
     {
-        GetComponent<SpriteRenderer>().sprite = seededSprite;
+        if (!hasPlant)
+        {
+            GetComponent<SpriteRenderer>().sprite = seededSprite;
+            GetComponent<ReceiveWater>().enabled = true;
+            hasPlant = true;
+        }
     }
 }
