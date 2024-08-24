@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(PlantGrowth))]
 public class ReceiveWater : MonoBehaviour, IWaterReceivable, ITimeObserver
 {
     [SerializeField]
     private Sprite wateredSprite;
 
     private Sprite unwateredSprite;
+    private bool isWatered;
 
     void Start()
     {
@@ -24,16 +26,27 @@ public class ReceiveWater : MonoBehaviour, IWaterReceivable, ITimeObserver
         }
     }
 
+    public bool IsWatered()
+    {
+        return isWatered;
+    }
+
    void IWaterReceivable.ReceiveWater()
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         unwateredSprite = spriteRenderer.sprite;
         spriteRenderer.sprite = wateredSprite;
+        isWatered = true;
     }
 
     public void NotifyNewDayStarted()
     {
-        if (unwateredSprite !=  null)
+        if (isWatered)
+        {
+            GetComponent<PlantGrowth>().NotifyShouldGrow();
+        }
+        isWatered = false;
+        if (unwateredSprite != null)
         {
             GetComponent<SpriteRenderer>().sprite = unwateredSprite;
         }

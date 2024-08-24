@@ -41,7 +41,6 @@ public class TimeAdvancer : MonoBehaviour
     private void StartNewDay()
     {
         day++;
-        Debug.Log("starting Day " + day);
         elapsedDayTime = 0f;
         observers.ForEach(observer => observer.NotifyNewDayStarted());
     }

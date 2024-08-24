@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 304240086703625212}
   - component: {fileID: 5601669605814451134}
   - component: {fileID: 145238833744197535}
+  - component: {fileID: 5363409609106189487}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -98,3 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wateredSprite: {fileID: 21300000, guid: 3555a372102ce3f4ea71ec9b83d6ca46, type: 3}
+--- !u!114 &5363409609106189487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648699222137372127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa11978b8a25c246aa664c3a66a1a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
