@@ -11,34 +11,25 @@ public class DryingRack : MonoBehaviour, IInteractable
     [SerializeField]
     Sprite filledSprite;
 
-    private bool isEmpty = true;
+    private bool isFilled = false;
 
-    public bool CanBePickedUp()
+    public void Interact(GameObject player)
     {
-        return false;
-    }
-
-    public bool CanStoreItems()
-    {
-        return isEmpty;
-    }
-
-    public IInteractable Interact(GameObject actor)
-    {
-        isEmpty = !isEmpty;
-        if (isEmpty)
+        PlayerInventory playerInventory = player.GetComponent<PlayerInventory>();
+        if (isFilled)
         {
+            playerInventory.AddToInventory("Dried Tea Leaves");
             GetComponent<SpriteRenderer>().sprite = emptySprite;
+            isFilled = false; 
         }
         else
         {
-            GetComponent<SpriteRenderer>().sprite = filledSprite;
+            if (playerInventory.GetSize() > 0)
+            {
+                playerInventory.RemoveFromInventory(playerInventory.Get(0));
+                GetComponent<SpriteRenderer>().sprite = filledSprite;
+                isFilled = true;
+            }
         }
-        return this;
-    }
-
-    public void Drop(Vector3 dropPosition)
-    {
-        throw new System.NotImplementedException();
     }
 }

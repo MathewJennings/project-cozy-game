@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PickUpHandler : MonoBehaviour, IInteractable
 {
-
-    private bool canBePickedUp = true;
+    private static GameObject playerHeldObject = null;
+    
     private bool isCurrentlyPickedUp = false;
 
     private void Update()
@@ -16,39 +16,47 @@ public class PickUpHandler : MonoBehaviour, IInteractable
         }
     }
 
-    public bool CanBePickedUp()
+    public void Interact(GameObject player)
     {
-        return canBePickedUp;
-    }
-
-    public bool CanStoreItems()
-    {
-        return false;
-    }
-
-    public IInteractable Interact(GameObject holder)
-    {
-        if (canBePickedUp)
+        if (isCurrentlyPickedUp)
         {
-            transform.SetParent(holder.transform, false);
-            UpdateTransformRelativeToParent();
-            canBePickedUp = false;
-            isCurrentlyPickedUp = true;
-            return this;
+            Drop(player);
         }
-        return null;
+        else if (playerHeldObject == null)
+        {
+            Pickup(player);
+        }
+    }
+
+    private void Drop(GameObject player)
+    {
+        transform.SetParent(null);
+        transform.position = GetDropPosition(player);
+        isCurrentlyPickedUp = false;
+        playerHeldObject = null;
+    }
+
+    private Vector3 GetDropPosition(GameObject player)
+    {
+        Vector3 dropPosition = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y - 0.5f, player.transform.position.z);
+        PlayerMover.FacingDirection facingDirection = player.GetComponent<PlayerMover>().GetFacingDirection();
+        if (facingDirection == PlayerMover.FacingDirection.Left)
+        {
+            dropPosition.x = player.transform.position.x - 1.5f;
+        }
+        return dropPosition;
+    }
+
+    private void Pickup(GameObject player)
+    {
+        transform.SetParent(player.transform, false);
+        UpdateTransformRelativeToParent();
+        isCurrentlyPickedUp = true;
+        playerHeldObject = this.gameObject;
     }
 
     private void UpdateTransformRelativeToParent()
     {
         transform.SetLocalPositionAndRotation(new Vector3(0f, 1.75f, 0f), Quaternion.identity);
-    }
-
-    public void Drop(Vector3 dropPosition)
-    {
-        transform.SetParent(null);
-        transform.position = dropPosition;
-        canBePickedUp = true;
-        isCurrentlyPickedUp = false;
     }
 }
