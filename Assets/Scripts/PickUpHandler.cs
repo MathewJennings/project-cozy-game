@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpHandler : MonoBehaviour, IPickuppable
+public class PickUpHandler : MonoBehaviour, IInteractable
 {
 
     private bool canBePickedUp = true;
@@ -21,18 +21,17 @@ public class PickUpHandler : MonoBehaviour, IPickuppable
         return canBePickedUp;
     }
 
-    public bool IsCurrentlyPickedUp()
+    public bool CanStoreItems()
     {
-        return isCurrentlyPickedUp;
+        return false;
     }
 
-    public IPickuppable Pickup(GameObject holder)
+    public IInteractable Interact(GameObject holder)
     {
         if (canBePickedUp)
         {
             transform.SetParent(holder.transform, false);
             UpdateTransformRelativeToParent();
-            // disable collider
             canBePickedUp = false;
             isCurrentlyPickedUp = true;
             return this;

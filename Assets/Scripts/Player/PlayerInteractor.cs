@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(PlayerMover))]
-public class PickerUpper : MonoBehaviour
+[RequireComponent (typeof(PlayerInventory))]
+public class PlayerInteractor : MonoBehaviour
 {
-    private IPickuppable currentlyHeldItem;
+    private IInteractable currentlyHeldItem;
 
     void Update()
     {
@@ -15,7 +16,7 @@ public class PickerUpper : MonoBehaviour
         {
             if (currentlyHeldItem == null)
             {
-                PerformPickup();
+                Interact();
             }
             else
             {
@@ -24,29 +25,51 @@ public class PickerUpper : MonoBehaviour
         }
     }
 
-    private void PerformPickup()
+    private void Interact()
     {
-        IPickuppable pickup = LookForNearbyPickUppables();
-        if (pickup != null)
+        IInteractable interactable = LookForNearbyInteractables();
+        if (interactable == null)
         {
-            currentlyHeldItem = pickup.Pickup(this.gameObject);
+            return;
+        }
+        if (interactable.CanBePickedUp())
+        {
+            PerformPickup(interactable);
+        }
+        else if(interactable.CanStoreItems())
+        {
+            PerformStore(interactable);
         }
     }
 
-    private IPickuppable LookForNearbyPickUppables()
+    private IInteractable LookForNearbyInteractables()
     {
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 2f);
         var orderedByProximity = hitColliders.OrderBy(collider => (transform.position - collider.transform.position).sqrMagnitude).ToArray();
 
         foreach (Collider2D collider in orderedByProximity)
         {
-            IPickuppable pickup = collider.gameObject.GetComponentInChildren<IPickuppable>();
-            if (pickup != null && pickup.CanBePickedUp())
+            IInteractable interactable = collider.gameObject.GetComponentInChildren<IInteractable>();
+            if (interactable != null)
             {
-                return pickup;
+                return interactable;
             }
         }
         return null;
+    }
+
+    private void PerformPickup(IInteractable interactable)
+    {
+        currentlyHeldItem = interactable.Interact(this.gameObject);
+    }
+
+    private void PerformStore(IInteractable interactable)
+    {
+        PlayerInventory inventory = GetComponent<PlayerInventory>();
+        if (inventory.GetSize() > 0) {
+            inventory.RemoveFromInventory(inventory.Get(0));
+            interactable.Interact(this.gameObject);
+        }
     }
 
     private void PerformDrop()
