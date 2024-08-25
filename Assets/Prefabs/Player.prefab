@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7657942160474596361}
   - component: {fileID: 1667412348680205857}
   - component: {fileID: 4107172084006650629}
-  - component: {fileID: 4500715156772088226}
+  - component: {fileID: 105255763946245156}
   - component: {fileID: 3262069232145448422}
   - component: {fileID: 113810539509744956}
   m_Layer: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 5
---- !u!114 &4500715156772088226
+--- !u!114 &105255763946245156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,10 +174,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4456714066685083971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6402b1e3dedc9474c9a9208f63dbfd4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e528ee63a210b34fbccde77666d21d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planterPrefab: {fileID: 3596943372775216099, guid: ee16f1e2c19c30c4cb608d6a617d2dd7, type: 3}
 --- !u!114 &3262069232145448422
 MonoBehaviour:
   m_ObjectHideFlags: 0
