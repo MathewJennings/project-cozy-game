@@ -34,11 +34,13 @@ public class PlantGrowth : MonoBehaviour, IHarvestable
         UpdateGrowthStage(IsHarvestable() ? currentGrowthStage : currentGrowthStage + 1);
     }
 
-    public void Harvest()
+    public GameObject Harvest()
     {
         if (IsHarvestable())
         {
             UpdateGrowthStage(GrowthStage.Plant);
+            return gameObject;
         }
+        return null;
     }
 }

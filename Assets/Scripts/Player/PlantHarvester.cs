@@ -4,6 +4,7 @@ using System.Linq;
 
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerInventory))]
 public class PlantHarvester: MonoBehaviour
 {
 
@@ -14,7 +15,11 @@ public class PlantHarvester: MonoBehaviour
             IHarvestable plant = LookForNearbyHarvestables();
             if (plant != null)
             {
-                plant.Harvest();
+                GameObject harvested = plant.Harvest();
+                if (harvested != null)
+                {
+                    GetComponent<PlayerInventory>().AddToInventory(harvested.name);
+                }
             }
         }
     }

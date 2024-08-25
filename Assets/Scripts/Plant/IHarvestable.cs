@@ -5,6 +5,10 @@ using UnityEngine;
 public interface IHarvestable
 {
     public bool IsHarvestable();
-    public void Harvest();
+
+    /**
+     * Returns the harvested GameObject, or null
+     */
+    public GameObject Harvest();
 
 }
