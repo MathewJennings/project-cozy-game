@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class PlantGrowth : MonoBehaviour
+public class PlantGrowth : MonoBehaviour, IHarvestable
 {
     [SerializeField]
     private Sprite[] sprites;
@@ -18,14 +18,27 @@ public class PlantGrowth : MonoBehaviour
         UpdateGrowthStage(GrowthStage.Seed);
     }
 
-    public void NotifyShouldGrow()
-    {
-        UpdateGrowthStage(currentGrowthStage < GrowthStage.Harvestable ? currentGrowthStage + 1 : currentGrowthStage);
-    }
-
     private void UpdateGrowthStage(GrowthStage newGrowthStage)
     {
         currentGrowthStage = newGrowthStage;
         spriteRenderer.sprite = sprites[(int)currentGrowthStage];
+    }
+
+    public bool IsHarvestable()
+    {
+        return currentGrowthStage == GrowthStage.Harvestable;
+    }
+
+    public void NotifyShouldGrow()
+    {
+        UpdateGrowthStage(IsHarvestable() ? currentGrowthStage : currentGrowthStage + 1);
+    }
+
+    public void Harvest()
+    {
+        if (IsHarvestable())
+        {
+            UpdateGrowthStage(GrowthStage.Plant);
+        }
     }
 }
