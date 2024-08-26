@@ -7,7 +7,7 @@ public class PlantGrowth : MonoBehaviour, IHarvestable
 {
     [SerializeField]
     private Sprite[] sprites;
-    enum GrowthStage { Seed, SmallSapling, BigSapling, Plant, Harvestable}
+    enum GrowthStage { Seed, SmallSapling, BigSapling, Plant, Harvestable }
 
     private GrowthStage currentGrowthStage;
     private SpriteRenderer spriteRenderer;

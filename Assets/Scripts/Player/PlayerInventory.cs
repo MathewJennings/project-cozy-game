@@ -4,27 +4,11 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    List<string> inventory = new List<string>();
+    [SerializeField]
+    private Inventory playerInventory;
 
-    public int GetSize()
+    public Inventory GetPlayerInventory()
     {
-        return inventory.Count;
-    }
-
-    public void AddToInventory(string newItemName)
-    {
-        inventory.Add(newItemName);
-    }
-
-    public string Get(int index)
-    {
-        return inventory[index];
-    }
-
-    public string RemoveFromInventory(string itemToRemove)
-    {
-        string itemFound = inventory.Find(item => item.Equals(itemToRemove));
-        inventory.Remove(itemFound);
-        return itemFound;
+        return playerInventory;
     }
 }

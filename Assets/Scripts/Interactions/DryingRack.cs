@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Inventory;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class DryingRack : MonoBehaviour, IInteractable
@@ -15,18 +16,19 @@ public class DryingRack : MonoBehaviour, IInteractable
 
     public void Interact(GameObject player)
     {
-        PlayerInventory playerInventory = player.GetComponent<PlayerInventory>();
+        Inventory playerInventory = player.GetComponent<PlayerInventory>().GetPlayerInventory();
+        
         if (isFilled)
         {
-            playerInventory.AddToInventory("Dried Tea Leaves");
+            //TODO playerInventory.AddToInventory("Dried Tea Leaves");
             GetComponent<SpriteRenderer>().sprite = emptySprite;
             isFilled = false; 
         }
         else
         {
-            if (playerInventory.GetSize() > 0)
+            if (playerInventory.Contains(new GreenTeaSeed(), 1))
             {
-                playerInventory.RemoveFromInventory(playerInventory.Get(0));
+                playerInventory.RemoveItem(new GreenTeaSeed(), 1);
                 GetComponent<SpriteRenderer>().sprite = filledSprite;
                 isFilled = true;
             }

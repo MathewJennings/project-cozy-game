@@ -18,7 +18,7 @@ public class PlantHarvester: MonoBehaviour
                 GameObject harvested = plant.Harvest();
                 if (harvested != null)
                 {
-                    GetComponent<PlayerInventory>().AddToInventory(harvested.name);
+                    //TODO GetComponent<PlayerInventory>().GetPlayerInventory().AddItem(harvested.name);
                 }
             }
         }
