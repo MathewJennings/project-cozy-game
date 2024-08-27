@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlantGrowth : MonoBehaviour, IHarvestable
 {
     [SerializeField]
+    private Crop crop;
+
+    [SerializeField]
     private Sprite[] sprites;
     enum GrowthStage { Seed, SmallSapling, BigSapling, Plant, Harvestable }
 
@@ -22,6 +25,11 @@ public class PlantGrowth : MonoBehaviour, IHarvestable
     {
         currentGrowthStage = newGrowthStage;
         spriteRenderer.sprite = sprites[(int)currentGrowthStage];
+    }
+
+    public Crop getCrop()
+    {
+        return crop;
     }
 
     public bool IsHarvestable()

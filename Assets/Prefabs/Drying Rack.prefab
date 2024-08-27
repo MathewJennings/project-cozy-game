@@ -182,3 +182,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emptySprite: {fileID: 21300000, guid: 318c8ae7bc77df340abafea6f1cbd9c2, type: 3}
   filledSprite: {fileID: 21300000, guid: 0adf21fca39ac764b9e2251efc2e5aea, type: 3}
+  greenTeaLeaves: {fileID: 11400000, guid: 72e3586ceac03534f8116b3b034d81fe, type: 2}
+  driedGreenTeaLeaves: {fileID: 11400000, guid: 91e7cbf251d8b64458c3798dec47a5b5, type: 2}

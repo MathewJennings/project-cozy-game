@@ -7,7 +7,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInventory))]
 public class PlantHarvester: MonoBehaviour
 {
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -18,7 +17,8 @@ public class PlantHarvester: MonoBehaviour
                 GameObject harvested = plant.Harvest();
                 if (harvested != null)
                 {
-                    //TODO GetComponent<PlayerInventory>().GetPlayerInventory().AddItem(harvested.name);
+                    Crop crop = plant.getCrop();
+                   GetComponent<PlayerInventory>().GetPlayerInventory().AddItem(crop, 1);
                 }
             }
         }

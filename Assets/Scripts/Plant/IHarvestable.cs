@@ -6,6 +6,8 @@ public interface IHarvestable
 {
     public bool IsHarvestable();
 
+    public Crop getCrop();
+
     /**
      * Returns the harvested GameObject, or null
      */

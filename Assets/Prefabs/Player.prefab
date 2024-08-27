@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b5f53f7b92e1640bc318015e7b91df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: {fileID: 11400000, guid: 668ab75e7c3e91944b2497bd127f7178, type: 2}
 --- !u!114 &105255763946245156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,3 +229,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd019ac1cc60274dbef02bee1807080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenTeaLeaves: {fileID: 11400000, guid: 72e3586ceac03534f8116b3b034d81fe, type: 2}

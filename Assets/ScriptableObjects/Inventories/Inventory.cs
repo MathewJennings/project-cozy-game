@@ -24,12 +24,12 @@ public class Inventory : ScriptableObject
     {
         InventoryItemAndAmount found = inventoryItems.Find(itemAndAmount =>
             itemAndAmount.GetInventoryItem().Equals(item) && itemAndAmount.GetAmount() >= amount);
-        return !found.Equals(default(InventoryItemAndAmount));
+        return found != null;
     }
 
     public void AddItem(InventoryItem item, int amount)
     {
-        if (Contains(item))
+        if (Contains(item, amount))
         {
             InventoryItemAndAmount existingStack = inventoryItems.Find(itemAndAmount => itemAndAmount.GetInventoryItem().Equals(item));
             existingStack.AddAmount(amount);
