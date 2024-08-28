@@ -13,6 +13,18 @@ PrefabInstance:
       value: Planter
       objectReference: {fileID: 0}
     - target: {fileID: 6836366289650308600, guid: 7740305ef0b15c640904d130ded69830, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836366289650308600, guid: 7740305ef0b15c640904d130ded69830, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836366289650308600, guid: 7740305ef0b15c640904d130ded69830, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6836366289650308600, guid: 7740305ef0b15c640904d130ded69830, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -52,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6836366289650308600, guid: 7740305ef0b15c640904d130ded69830, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -61,7 +77,7 @@ PrefabInstance:
       addedObject: {fileID: -5449108187391358310}
     - targetCorrespondingSourceObject: {fileID: 1528687204559624173, guid: 7740305ef0b15c640904d130ded69830, type: 3}
       insertIndex: 2
-      addedObject: {fileID: -6328630915004747375}
+      addedObject: {fileID: 3904664097007435466}
     - targetCorrespondingSourceObject: {fileID: 1528687204559624173, guid: 7740305ef0b15c640904d130ded69830, type: 3}
       insertIndex: 3
       addedObject: {fileID: 2204567344071615964}
@@ -129,8 +145,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &-6328630915004747375
-CircleCollider2D:
+--- !u!61 &3904664097007435466
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,9 +177,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.12}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.5, y: 0.4}
+  m_EdgeRadius: 0
 --- !u!50 &2204567344071615964
 Rigidbody2D:
   serializedVersion: 4

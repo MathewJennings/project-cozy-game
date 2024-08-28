@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: OnGameLoadPlayerInventory
   m_EditorClassIdentifier: 
   inventoryItems:
+  - inventoryItem: {fileID: 11400000, guid: 127fc4cced8e64f4f8dbe49ef7bb06a0, type: 2}
+    amount: 1
   - inventoryItem: {fileID: 11400000, guid: 86675ab4e7360c144bb06dea6cc5839c, type: 2}
     amount: 2

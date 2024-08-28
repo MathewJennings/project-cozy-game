@@ -1951,7 +1951,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press "2" to water the planters
+  m_text: Left Click to water a plant (when watering can is equipped)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2428,7 +2428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1465341457}
   m_Layer: 0
-  m_Name: Left Click Instructions
+  m_Name: Seed Instructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2931,7 +2931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1977004590}
   m_Layer: 0
-  m_Name: '"2" Instructions'
+  m_Name: Watering Can Instructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

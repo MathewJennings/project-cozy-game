@@ -1,5 +1,6 @@
 using UnityEngine;
 
-public abstract class WateringCan : InventoryItem {
+[CreateAssetMenu(fileName = "NewWateringCan", menuName = "Inventory/Tools/Watering Can")]
+public class WateringCan : Tool {
     
 }
