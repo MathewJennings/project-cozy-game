@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInventory))]
@@ -9,7 +9,7 @@ public class PlantHarvester: MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetMouseButtonDown((int)MouseButton.Left))
         {
             IHarvestable plant = LookForNearbyHarvestables();
             if (plant != null)
