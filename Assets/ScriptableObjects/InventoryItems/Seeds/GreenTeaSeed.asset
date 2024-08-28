@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c170072996a27045874e20aab00e596, type: 3}
   m_Name: GreenTeaSeed
   m_EditorClassIdentifier: 
+  uiSprite: {fileID: 21300000, guid: 2f081b3476e644e45b68a402aa6f4117, type: 3}
   daysAsSeed: 1
   daysAsSmallSapling: 1
   daysAsBigSapling: 1

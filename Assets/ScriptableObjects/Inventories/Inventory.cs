@@ -10,9 +10,14 @@ public class Inventory : ScriptableObject
     [SerializeField]
     private List<InventoryItemAndAmount> inventoryItems;
 
-    public List<InventoryItemAndAmount> GetInventory()
+    public int Count()
     {
-        return inventoryItems;
+        return inventoryItems.Count;
+    }
+
+    public InventoryItemAndAmount Get(int index)
+    {
+        return inventoryItems[index];
     }
 
     public bool Contains(InventoryItem item)
