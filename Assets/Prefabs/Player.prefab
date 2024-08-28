@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5060b8b436e49f14c96ddcd6ddff9df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantPrefab: {fileID: 6648699222137372127, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+  cropPrefab: {fileID: 768827268052967992, guid: 4c7d8d5b39048b444b700b19a7fe8ef1, type: 3}
 --- !u!114 &113810539509744956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,4 +229,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd019ac1cc60274dbef02bee1807080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  greenTeaLeaves: {fileID: 11400000, guid: 72e3586ceac03534f8116b3b034d81fe, type: 2}

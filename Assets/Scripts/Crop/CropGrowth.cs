@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class PlantGrowth : MonoBehaviour, IHarvestable
+public class CropGrowth : MonoBehaviour, IHarvestable
 {
     [SerializeField]
     private Crop crop;

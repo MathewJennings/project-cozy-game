@@ -6,7 +6,7 @@ using UnityEngine;
 public class SeedPlanter : MonoBehaviour
 {
     [SerializeField]
-    private GameObject plantPrefab;
+    private GameObject cropPrefab;
 
     void Update()
     {
@@ -15,7 +15,7 @@ public class SeedPlanter : MonoBehaviour
             IPlantReceivable planter = LookForNearbyPlanters();
             if (planter != null)
             {
-                planter.ReceivePlant(plantPrefab);
+                planter.ReceivePlant(cropPrefab);
             }
         }
     }

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6264367327530688487
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 304240086703625212, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363409609106189487, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: crop
+      value: 
+      objectReference: {fileID: 11400000, guid: 72e3586ceac03534f8116b3b034d81fe, type: 2}
+    - target: {fileID: 6648699222137372127, guid: 81e333e8b58631843a38332429573ec5, type: 3}
+      propertyPath: m_Name
+      value: Green Tea Leaves
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 81e333e8b58631843a38332429573ec5, type: 3}

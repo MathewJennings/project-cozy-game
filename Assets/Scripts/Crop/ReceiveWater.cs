@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(PlantGrowth))]
+[RequireComponent(typeof(CropGrowth))]
 public class ReceiveWater : MonoBehaviour, IWaterReceivable, ITimeObserver
 {
 
@@ -41,7 +41,7 @@ public class ReceiveWater : MonoBehaviour, IWaterReceivable, ITimeObserver
     {
         if (isWatered)
         {
-            GetComponent<PlantGrowth>().NotifyShouldGrow();
+            GetComponent<CropGrowth>().NotifyShouldGrow();
             isWatered = false;
             // Brighten the sprite because it is dry
             spriteRenderer.color = Color.white;
