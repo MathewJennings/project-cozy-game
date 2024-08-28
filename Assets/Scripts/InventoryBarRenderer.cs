@@ -9,33 +9,26 @@ public class InventoryBarRenderer : MonoBehaviour
     [SerializeField]
     private PlayerInventory playerInventory;
 
-    private int selectedIndex = 0;
+    [SerializeField]
+    private GameObject inventorySlot;
+
+    private void Start()
+    {
+        for (int i = 0; i < playerInventory.GetInventorySize(); i++)
+        {
+            GameObject newSlot = Instantiate(inventorySlot, this.transform);
+            RectTransform rectTransform = newSlot.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(10 + 170 * i, rectTransform.anchoredPosition.y);
+        }
+    }
 
     void Update()
     {
-        UpdateSelectedIndex();
         for (int i = 0; i < transform.childCount; i++)
         {
             RenderInventoryItem(i);
             RenderSelected(i);
         }
-    }
-
-    private void UpdateSelectedIndex()
-    {
-        if (Input.mouseScrollDelta.y < 0)
-        {
-            selectedIndex = mod(selectedIndex - 1, transform.childCount);
-        } else if (Input.mouseScrollDelta.y > 0)
-        {
-            selectedIndex = mod(selectedIndex + 1, transform.childCount);
-        }
-    }
-
-    int mod(int x, int m)
-    {
-        int r = x % m;
-        return r < 0 ? r + m : r;
     }
 
     private void RenderInventoryItem(int i)
@@ -57,6 +50,6 @@ public class InventoryBarRenderer : MonoBehaviour
 
     private void RenderSelected(int i)
     {
-        transform.GetChild(i).Find("Selected").gameObject.SetActive(i == selectedIndex);
+        transform.GetChild(i).Find("Selected").gameObject.SetActive(i == playerInventory.GetSelectedIndex());
     }
 }
