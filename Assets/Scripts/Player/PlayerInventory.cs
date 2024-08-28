@@ -5,16 +5,28 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField]
-    private Inventory playerInventory;
+    private Inventory inventoryOnGameLoad;
+
+    [SerializeField]
+    private Inventory inventory;
 
     [SerializeField]
     private int inventorySize = 11;
     
     private int selectedIndex = 0;
 
-    public Inventory GetPlayerInventory()
+    private void Start()
     {
-        return playerInventory;
+        inventory.Clear();
+        for (int i = 0; i < inventoryOnGameLoad.Count(); i++)
+        {
+            inventory.AddItem(inventoryOnGameLoad.Get(i));
+        }
+    }
+
+    public Inventory GetInventorySO()
+    {
+        return inventory;
     }
 
     public int GetInventorySize()
@@ -29,26 +41,26 @@ public class PlayerInventory : MonoBehaviour
 
     public Inventory.InventoryItemAndAmount GetCurrentlySelectedItem()
     {
-        if (selectedIndex > playerInventory.Count())
+        if (selectedIndex > inventory.Count())
         {
             return null;
         }
-        return playerInventory.Get(selectedIndex);
+        return inventory.Get(selectedIndex);
     }
 
     void Update()
     {
-        if (Input.mouseScrollDelta.y < 0)
+        if (Input.mouseScrollDelta.y > 0)
         {
             selectedIndex = mod(selectedIndex - 1, inventorySize);
         }
-        else if (Input.mouseScrollDelta.y > 0)
+        else if (Input.mouseScrollDelta.y < 0)
         {
             selectedIndex = mod(selectedIndex + 1, inventorySize);
         }
     }
 
-    int mod(int x, int m)
+    private int mod(int x, int m)
     {
         int r = x % m;
         return r < 0 ? r + m : r;

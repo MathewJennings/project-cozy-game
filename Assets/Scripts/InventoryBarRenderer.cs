@@ -33,7 +33,7 @@ public class InventoryBarRenderer : MonoBehaviour
 
     private void RenderInventoryItem(int i)
     {
-        Inventory inventory = playerInventory.GetPlayerInventory();
+        Inventory inventory = playerInventory.GetInventorySO();
         if (i < inventory.Count())
         {
             Inventory.InventoryItemAndAmount itemAndCount = inventory.Get(i);
@@ -44,6 +44,7 @@ public class InventoryBarRenderer : MonoBehaviour
             amountText.text = itemAndCount.GetAmount().ToString();
         } else
         {
+            transform.GetChild(i).Find("Image").GetComponent<Image>().sprite = null;
             transform.GetChild(i).Find("Quantity").GetComponent<TextMeshProUGUI>().gameObject.SetActive(false);
         }
     }

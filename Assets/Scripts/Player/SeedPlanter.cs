@@ -1,23 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerInventory))]
 public class SeedPlanter : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject cropPrefab;
-
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetMouseButtonDown((int)MouseButton.Left))
         {
-            IPlantReceivable planter = LookForNearbyPlanters();
-            if (planter != null)
+            InventoryItem currentItem = GetComponent<PlayerInventory>().GetCurrentlySelectedItem().GetInventoryItem();
+            if (currentItem is not Seed)
             {
-                planter.ReceivePlant(cropPrefab);
+                return;
             }
+
+            IPlantReceivable planter = LookForNearbyPlanters();
+            if (planter == null)
+            {
+                return;
+            }
+            PlantSeed(currentItem as Seed, planter);
         }
+    }
+
+    private void PlantSeed(Seed seed, IPlantReceivable planter)
+    {
+        GetComponent<PlayerInventory>().GetInventorySO().RemoveItem(seed, 1);
+        planter.ReceivePlant(seed.cropPrefab);
     }
 
     private IPlantReceivable LookForNearbyPlanters()

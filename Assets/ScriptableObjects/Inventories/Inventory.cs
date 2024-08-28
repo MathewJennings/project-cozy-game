@@ -10,6 +10,11 @@ public class Inventory : ScriptableObject
     [SerializeField]
     private List<InventoryItemAndAmount> inventoryItems;
 
+    public void Clear()
+    {
+        inventoryItems.Clear();
+    }
+
     public int Count()
     {
         return inventoryItems.Count;
@@ -32,6 +37,17 @@ public class Inventory : ScriptableObject
         return found != null;
     }
 
+    public void AddItem(InventoryItemAndAmount item)
+    {
+        InventoryItemAndAmount deepCopy = new InventoryItemAndAmount(item.GetInventoryItem(), item.GetAmount());
+        inventoryItems.Add(deepCopy);
+    }
+
+    public void AddItem(InventoryItem item)
+    {
+        AddItem(item, 1);
+    }
+
     public void AddItem(InventoryItem item, int amount)
     {
         if (Contains(item, amount))
@@ -43,6 +59,10 @@ public class Inventory : ScriptableObject
         {
             inventoryItems.Add(new InventoryItemAndAmount(item, amount));
         }
+    }
+    public void RemoveItem(InventoryItem item)
+    {
+        RemoveItem(item, 1);
     }
 
     public void RemoveItem(InventoryItem item, int amount)

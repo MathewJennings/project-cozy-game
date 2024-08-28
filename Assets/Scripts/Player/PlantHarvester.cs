@@ -18,7 +18,7 @@ public class PlantHarvester: MonoBehaviour
                 if (harvested != null)
                 {
                     Crop crop = plant.getCrop();
-                   GetComponent<PlayerInventory>().GetPlayerInventory().AddItem(crop, 1);
+                   GetComponent<PlayerInventory>().GetInventorySO().AddItem(crop, 1);
                 }
             }
         }

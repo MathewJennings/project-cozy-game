@@ -179,7 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b5f53f7b92e1640bc318015e7b91df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory: {fileID: 11400000, guid: 668ab75e7c3e91944b2497bd127f7178, type: 2}
+  inventoryOnGameLoad: {fileID: 11400000, guid: 1258ee100eed3954fae5456166571748, type: 2}
+  inventory: {fileID: 11400000, guid: 668ab75e7c3e91944b2497bd127f7178, type: 2}
+  inventorySize: 11
 --- !u!114 &105255763946245156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5060b8b436e49f14c96ddcd6ddff9df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropPrefab: {fileID: 768827268052967992, guid: 4c7d8d5b39048b444b700b19a7fe8ef1, type: 3}
 --- !u!114 &113810539509744956
 MonoBehaviour:
   m_ObjectHideFlags: 0

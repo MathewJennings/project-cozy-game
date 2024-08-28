@@ -22,7 +22,7 @@ public class DryingRack : MonoBehaviour, IInteractable
 
     public void Interact(GameObject player)
     {
-        Inventory playerInventory = player.GetComponent<PlayerInventory>().GetPlayerInventory();
+        Inventory playerInventory = player.GetComponent<PlayerInventory>().GetInventorySO();
         
         if (isFilled)
         {
