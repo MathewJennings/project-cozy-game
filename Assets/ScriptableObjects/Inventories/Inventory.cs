@@ -22,6 +22,10 @@ public class Inventory : ScriptableObject
 
     public InventoryItemAndAmount Get(int index)
     {
+        if (index >= inventoryItems.Count)
+        {
+            return null;
+        }
         return inventoryItems[index];
     }
 

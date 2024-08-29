@@ -5,23 +5,25 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInventory))]
-public class PlantHarvester: MonoBehaviour
+public class PlantHarvester: MonoBehaviour, IClickInteraction
 {
-    void Update()
+    public bool HandleLeftClick()
     {
-        if (Input.GetMouseButtonDown((int)MouseButton.Left))
+        IHarvestable plant = LookForNearbyHarvestables();
+        if (plant == null)
         {
-            IHarvestable plant = LookForNearbyHarvestables();
-            if (plant != null)
-            {
-                GameObject harvested = plant.Harvest();
-                if (harvested != null)
-                {
-                    Crop crop = plant.getCrop();
-                   GetComponent<PlayerInventory>().GetInventorySO().AddItem(crop, 1);
-                }
-            }
+            return false;
         }
+        
+        GameObject harvested = plant.Harvest();
+        if (harvested == null)
+        {
+            return false;
+        }
+
+        Crop crop = plant.getCrop();
+        GetComponent<PlayerInventory>().GetInventorySO().AddItem(crop, 1);
+        return true;
     }
 
     private IHarvestable LookForNearbyHarvestables()

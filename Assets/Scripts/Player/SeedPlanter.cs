@@ -1,29 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInventory))]
-public class SeedPlanter : MonoBehaviour
+public class SeedPlanter : MonoBehaviour, IClickInteraction
 {
-    void Update()
+    public bool HandleLeftClick()
     {
-        if (Input.GetMouseButtonDown((int)MouseButton.Left))
+        Inventory.InventoryItemAndAmount currentlySelected = GetComponent<PlayerInventory>().GetCurrentlySelectedItem();
+        if (currentlySelected == null)
         {
-            InventoryItem currentItem = GetComponent<PlayerInventory>().GetCurrentlySelectedItem().GetInventoryItem();
-            if (currentItem is not Seed)
-            {
-                return;
-            }
-
-            IPlantReceivable planter = LookForNearbyPlanters();
-            if (planter == null)
-            {
-                return;
-            }
-            PlantSeed(currentItem as Seed, planter);
+            return false;
         }
+
+        InventoryItem currentItem = currentlySelected.GetInventoryItem();
+        if (currentItem is not Seed)
+        {
+            return false;
+        }
+
+        IPlantReceivable planter = LookForNearbyPlanters();
+        if (planter == null)
+        {
+            return false;
+        }
+        PlantSeed(currentItem as Seed, planter);
+        return true;
     }
 
     private void PlantSeed(Seed seed, IPlantReceivable planter)

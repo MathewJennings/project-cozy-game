@@ -1,31 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInventory))]
-public class PlantWaterer : MonoBehaviour
+public class PlantWaterer : MonoBehaviour, IClickInteraction
 {
 
-    void Update()
+    public bool HandleLeftClick()
     {
-        if (Input.GetMouseButtonDown((int)MouseButton.Left))
+        Inventory.InventoryItemAndAmount currentlySelected = GetComponent<PlayerInventory>().GetCurrentlySelectedItem();
+        if (currentlySelected == null)
         {
-            InventoryItem currentItem = GetComponent<PlayerInventory>().GetCurrentlySelectedItem().GetInventoryItem();
-            if (currentItem is not WateringCan)
-            {
-                return;
-            }
-
-            IWaterReceivable plant = LookForNearbyPlants();
-            if (plant == null)
-            {
-                return;
-            }
-
-            plant.ReceiveWater();
+            return false;
         }
+
+        InventoryItem currentItem = currentlySelected.GetInventoryItem();
+        if (currentItem is not WateringCan)
+        {
+            return false;
+        }
+
+        IWaterReceivable plant = LookForNearbyPlants();
+        if (plant == null)
+        {
+            return false;
+        }
+
+        plant.ReceiveWater();
+        return true;
     }
 
     private IWaterReceivable LookForNearbyPlants()
