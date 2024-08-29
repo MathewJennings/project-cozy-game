@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerInventory : MonoBehaviour, IPauseObserver
 {
     [SerializeField]
     private Inventory inventoryOnGameLoad;
@@ -21,6 +21,16 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < inventoryOnGameLoad.Count(); i++)
         {
             inventory.AddItem(inventoryOnGameLoad.Get(i));
+        }
+        FindObjectOfType<GamePauser>().RegisterObserver(this);
+    }
+
+    private void OnDestroy()
+    {
+        GamePauser gamePauser = FindObjectOfType<GamePauser>();
+        if (gamePauser != null)
+        {
+            gamePauser.DeregisterObserver(this);
         }
     }
 
@@ -64,5 +74,15 @@ public class PlayerInventory : MonoBehaviour
     {
         int r = x % m;
         return r < 0 ? r + m : r;
+    }
+
+    public void NotifyGamePaused()
+    {
+        this.enabled = false;
+    }
+
+    public void NotifyGameResumed()
+    {
+        this.enabled = true;
     }
 }

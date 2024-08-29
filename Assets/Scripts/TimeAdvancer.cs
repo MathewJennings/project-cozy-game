@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 
-public class TimeAdvancer : MonoBehaviour
+public class TimeAdvancer : MonoBehaviour, IPauseObserver
 {
     [SerializeField]
     private float dayLengthInSeconds;
@@ -26,6 +26,16 @@ public class TimeAdvancer : MonoBehaviour
     void Start()
     {
         StartNewDay();
+        FindObjectOfType<GamePauser>().RegisterObserver(this);
+    }
+
+    private void OnDestroy()
+    {
+        GamePauser gamePauser = FindObjectOfType<GamePauser>();
+        if (gamePauser != null)
+        {
+            gamePauser.DeregisterObserver(this);
+        }
     }
 
     // Update is called once per frame
@@ -50,5 +60,15 @@ public class TimeAdvancer : MonoBehaviour
         elapsedDayTime += Time.deltaTime;
         float percentDayElapased = elapsedDayTime / dayLengthInSeconds;
         observers.ForEach(observer => observer.NotifyTimeOfDay(percentDayElapased));
+    }
+
+    public void NotifyGamePaused()
+    {
+        this.enabled = false;
+    }
+
+    public void NotifyGameResumed()
+    {
+        this.enabled = true;
     }
 }

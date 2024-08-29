@@ -5,8 +5,22 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(IClickInteraction))]
-public class PlayerInteractor : MonoBehaviour
+public class PlayerInteractor : MonoBehaviour, IPauseObserver
 {
+    void Start()
+    {
+        FindObjectOfType<GamePauser>().RegisterObserver(this);
+    }
+
+    private void OnDestroy()
+    {
+        GamePauser gamePauser = FindObjectOfType<GamePauser>();
+        if (gamePauser != null)
+        {
+            gamePauser.DeregisterObserver(this);
+        }
+    }
+    
     void Update()
     {
         HandleLeftClick();
@@ -57,5 +71,15 @@ public class PlayerInteractor : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void NotifyGamePaused()
+    {
+        this.enabled = false;
+    }
+
+    public void NotifyGameResumed()
+    {
+        this.enabled = true;
     }
 }

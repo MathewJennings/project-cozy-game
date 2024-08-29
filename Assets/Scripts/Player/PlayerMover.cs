@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour, IPauseObserver
 {
     [SerializeField]
     private float speedMultiplier = 1f;
@@ -13,6 +13,20 @@ public class PlayerMover : MonoBehaviour
     public FacingDirection GetFacingDirection()
     {
         return facingDirection;
+    }
+
+    void Start()
+    {
+        FindObjectOfType<GamePauser>().RegisterObserver(this);
+    }
+
+    private void OnDestroy()
+    {
+        GamePauser gamePauser = FindObjectOfType<GamePauser>();
+        if (gamePauser != null)
+        {
+            gamePauser.DeregisterObserver(this);
+        }
     }
 
     void Update()
@@ -37,5 +51,15 @@ public class PlayerMover : MonoBehaviour
             facingDirection = FacingDirection.Right;
         }
         gameObject.transform.position += translationVector.normalized * speedMultiplier * Time.deltaTime;
+    }
+
+    public void NotifyGamePaused()
+    {
+        this.enabled = false;
+    }
+
+    public void NotifyGameResumed()
+    {
+        this.enabled = true;
     }
 }
