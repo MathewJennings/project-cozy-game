@@ -40,8 +40,9 @@ public class InventoryBarRenderer : MonoBehaviour
             transform.GetChild(i).Find("Image").GetComponent<Image>().sprite = itemAndCount.GetInventoryItem().uiSprite;
 
             TextMeshProUGUI amountText = transform.GetChild(i).Find("Quantity").GetComponent<TextMeshProUGUI>();
-            amountText.gameObject.SetActive(true);
-            amountText.text = itemAndCount.GetAmount().ToString();
+            int amount = itemAndCount.GetAmount();
+            amountText.text = amount.ToString();
+            amountText.gameObject.SetActive(amount > 1);
         } else
         {
             transform.GetChild(i).Find("Image").GetComponent<Image>().sprite = null;
