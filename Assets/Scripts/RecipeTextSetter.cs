@@ -16,13 +16,7 @@ public class RecipeTextSetter : MonoBehaviour
 
     void Start()
     {
-        recipeTitle.text = recipeSO.title;
-        recipeText.text = recipeSO.text;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        recipeTitle.text = recipeSO.isRevealed ? recipeSO.title.Replace("\\n", "\n") : recipeSO.unrevealedTitle.Replace("\\n", "\n");
+        recipeText.text = recipeSO.isRevealed ? recipeSO.text.Replace("\\n", "\n") : recipeSO.unrevealedText.Replace("\\n", "\n");
     }
 }
