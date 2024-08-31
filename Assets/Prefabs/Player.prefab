@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryOnGameLoad: {fileID: 11400000, guid: 1258ee100eed3954fae5456166571748, type: 2}
   inventory: {fileID: 11400000, guid: 668ab75e7c3e91944b2497bd127f7178, type: 2}
-  inventorySize: 11
+  inventorySize: 12
 --- !u!114 &105255763946245156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +256,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627d851b5f855ef4687521a952b6af07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipePage: {fileID: 967948324819518716, guid: f8df564204720d54ebdc2991281a5d60, type: 3}
   recipeBookSO: {fileID: 11400000, guid: bd53045b1c845164bb3c5c4e466ecdc8, type: 2}
   recipeBook: {fileID: 0}

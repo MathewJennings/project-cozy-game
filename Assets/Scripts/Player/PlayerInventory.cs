@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour, IPauseObserver
+public class PlayerInventory : MonoBehaviour
 {
     [SerializeField]
     private Inventory inventoryOnGameLoad;
@@ -11,7 +11,7 @@ public class PlayerInventory : MonoBehaviour, IPauseObserver
     private Inventory inventory;
 
     [SerializeField]
-    private int inventorySize = 11;
+    private int inventorySize = 12;
     
     private int selectedIndex = 0;
 
@@ -21,16 +21,6 @@ public class PlayerInventory : MonoBehaviour, IPauseObserver
         for (int i = 0; i < inventoryOnGameLoad.Count(); i++)
         {
             inventory.AddItem(inventoryOnGameLoad.Get(i));
-        }
-        FindObjectOfType<GamePauser>().RegisterObserver(this);
-    }
-
-    private void OnDestroy()
-    {
-        GamePauser gamePauser = FindObjectOfType<GamePauser>();
-        if (gamePauser != null)
-        {
-            gamePauser.DeregisterObserver(this);
         }
     }
 
@@ -62,27 +52,17 @@ public class PlayerInventory : MonoBehaviour, IPauseObserver
     {
         if (Input.mouseScrollDelta.y > 0)
         {
-            selectedIndex = mod(selectedIndex - 1, inventorySize);
+            selectedIndex = Mod(selectedIndex - 1, inventorySize);
         }
         else if (Input.mouseScrollDelta.y < 0)
         {
-            selectedIndex = mod(selectedIndex + 1, inventorySize);
+            selectedIndex = Mod(selectedIndex + 1, inventorySize);
         }
     }
 
-    private int mod(int x, int m)
+    private int Mod(int x, int m)
     {
         int r = x % m;
         return r < 0 ? r + m : r;
-    }
-
-    public void NotifyGamePaused()
-    {
-        this.enabled = false;
-    }
-
-    public void NotifyGameResumed()
-    {
-        this.enabled = true;
     }
 }
