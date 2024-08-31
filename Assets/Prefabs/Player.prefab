@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 6349354502090328106}
   - component: {fileID: 113810539509744956}
   - component: {fileID: 6058928966191251874}
-  - component: {fileID: 2194839408715276841}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -244,17 +243,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cbf9894716c894cb2e30bc4ec44645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2194839408715276841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4456714066685083971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627d851b5f855ef4687521a952b6af07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recipeBookSO: {fileID: 11400000, guid: bd53045b1c845164bb3c5c4e466ecdc8, type: 2}
-  recipeBook: {fileID: 0}

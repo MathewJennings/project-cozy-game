@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2038166578739502385}
   - component: {fileID: 4208836692160566511}
   - component: {fileID: 5002540158894892172}
+  - component: {fileID: 7652718033876187917}
   m_Layer: 5
   m_Name: Recipe Book
   m_TagString: Untagged
@@ -112,6 +113,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7652718033876187917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251901124909155848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627d851b5f855ef4687521a952b6af07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipeBookSO: {fileID: 11400000, guid: bd53045b1c845164bb3c5c4e466ecdc8, type: 2}
+  leftPage: {fileID: 7336347006480657345}
+  rightPage: {fileID: 5162274372736952230}
+  recipeBookState: {fileID: 11400000, guid: aceae262813b8f14489eca684a4c7a46, type: 2}
 --- !u!1 &7336347006480657345
 GameObject:
   m_ObjectHideFlags: 0
