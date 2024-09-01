@@ -51,13 +51,18 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        InventoryItem requiredItem = UnrevealedIngredientDropHandler.GetRequiredItem();
-        if (requiredItem == inventoryItem)
+        UnrevealedIngredientDropHandler dropHandler = UnrevealedIngredientDropHandler.GetCurrentlyHovered();
+        if (dropHandler != null)
         {
-            Debug.Log("Successful drag of " + requiredItem.name);
-        } else if (requiredItem != null)
-        {
-            Debug.Log("required item " + requiredItem.name);
+            Ingredient unrevealedIngredient = dropHandler.GetUnrevealedIngredient();
+            if (unrevealedIngredient == inventoryItem)
+            {
+                Debug.Log("Successful drag of " + inventoryItem.name);
+                dropHandler.RevealIngredient();
+            } else if (unrevealedIngredient != null)
+            {
+                Debug.Log("required ingredient " + unrevealedIngredient.name);
+            }
         }
         Destroy(draggingObject);
     }

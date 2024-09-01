@@ -2,49 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UnrevealedIngredientDropHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-
     [SerializeField]
-    private InventoryItem unrevealedItem;
+    private GameObject selectedHighlightingObject;
 
-    [SerializeField]
-    private List<GameObject> selectedHighlightingObjects;
+    private static UnrevealedIngredientDropHandler currentlyHovered;
 
-    private static UnrevealedIngredientDropHandler hoverTarget;
+    private Recipe recipeSO;
+    private RecipePageSetter recipePageSetter;
+    private Ingredient unrevealedIngredient;
 
-    public void SetUnrevealedItem(InventoryItem unrevealedItem)
+    public static UnrevealedIngredientDropHandler GetCurrentlyHovered()
     {
-        this.unrevealedItem = unrevealedItem;
+        return currentlyHovered;
     }
 
-    public static InventoryItem GetRequiredItem()
+    public void SetRecipe(Recipe recipe)
     {
-        if (hoverTarget == null)
-        {
-            return null;
-        }
-        return hoverTarget.unrevealedItem;
+        recipeSO = recipe;
+    }
+
+    public void SetRecipePageSetter(RecipePageSetter recipePageSetter)
+    {
+        this.recipePageSetter = recipePageSetter;
+    }
+
+    public void SetUnrevealedIngredient(Ingredient unrevealedIngredient)
+    {
+        this.unrevealedIngredient = unrevealedIngredient;
+    }
+
+    public Ingredient GetUnrevealedIngredient()
+    {
+        return unrevealedIngredient;
+    }
+
+    public void RevealIngredient()
+    {
+        int revealedIndex = recipeSO.ingredients.IndexOf(unrevealedIngredient);
+        recipeSO.ingredientRevealed[revealedIndex] = true;
+        gameObject.GetComponent<Image>().sprite = unrevealedIngredient.uiSprite;
+        selectedHighlightingObject.SetActive(false);
     }
 
     private void Start()
     {
-        selectedHighlightingObjects.ForEach(gameObject => gameObject.SetActive(false));
+        selectedHighlightingObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        hoverTarget = this;
-        selectedHighlightingObjects.ForEach(gameObject => gameObject.SetActive(true));
+        int index = recipeSO.ingredients.IndexOf(unrevealedIngredient);
+        if (!recipeSO.ingredientRevealed[index])
+        {
+            currentlyHovered = this;
+            selectedHighlightingObject.SetActive(true);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (hoverTarget == this)
+        if (currentlyHovered == this)
         {
-            hoverTarget = null;
-            selectedHighlightingObjects.ForEach(gameObject => gameObject.SetActive(false));
+            currentlyHovered = null;
+            selectedHighlightingObject.SetActive(false);
         }
     }
 }

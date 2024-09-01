@@ -89,9 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ed1387254c85da4080f30f64b56360a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unrevealedItem: {fileID: 0}
-  selectedHighlightingObjects:
-  - {fileID: 8776679755819343841}
+  selectedHighlightingObject: {fileID: 8776679755819343841}
 --- !u!1 &8776679755819343841
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,6 +29,11 @@ public class RecipePageSetter : MonoBehaviour
 
     private static Color transparentGrey = new(.41f, .41f, .41f, .77f);
 
+    public void RevealIngredient(Ingredient ingredient)
+    {
+       
+    }
+
     void Start()
     {
         SetText();
@@ -59,15 +64,19 @@ public class RecipePageSetter : MonoBehaviour
         for(int i = 0; i < recipeSO.ingredients.Count; i++)
         {
             Ingredient ingredient = recipeSO.ingredients[i];
-            
+            bool ingredientRevealed = recipeSO.ingredientRevealed[i];
+
             GameObject ingredientImage = Instantiate(ingredientImagePrefab, ingredientsSection.transform);
-            ingredientImage.GetComponent<Image>().sprite = recipeSO.isRevealed ? ingredient.uiSprite : ingredient.unidentifiedUiSprite;
+            ingredientImage.GetComponent<Image>().sprite = ingredientRevealed ? ingredient.uiSprite : ingredient.unidentifiedUiSprite;
             
             RectTransform rectTransform = ingredientImage.GetComponent<RectTransform>();
             float width = rectTransform.rect.width;
             rectTransform.anchoredPosition = new Vector2((10 + width) * i, rectTransform.anchoredPosition.y);
 
-            ingredientImage.GetComponent<UnrevealedIngredientDropHandler>().SetUnrevealedItem(ingredient);
+            UnrevealedIngredientDropHandler unrevealedIngredientDropHandler = ingredientImage.GetComponent<UnrevealedIngredientDropHandler>();
+            unrevealedIngredientDropHandler.SetUnrevealedIngredient(ingredient);
+            unrevealedIngredientDropHandler.SetRecipe(recipeSO);
+            unrevealedIngredientDropHandler.SetRecipePageSetter(this);
         }
     }
 
