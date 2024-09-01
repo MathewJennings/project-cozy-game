@@ -24,18 +24,22 @@ public class RecipePageSetter : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI recipeText;
 
+    [SerializeField]
+    private GameObject hiddenRecipeChunks;
+
     private static Color transparentGrey = new(.41f, .41f, .41f, .77f);
 
     void Start()
     {
         SetText();
         SetIngredients();
+        SetHiddenRecipeChunks();
     }
 
     private void SetText()
     {
-        recipeTitle.text = recipeSO.isRevealed ? recipeSO.title.Replace("\\n", "\n") : recipeSO.unrevealedTitle.Replace("\\n", "\n");
-        recipeText.text = recipeSO.isRevealed ? recipeSO.text.Replace("\\n", "\n") : recipeSO.unrevealedText.Replace("\\n", "\n");
+        recipeTitle.text = recipeSO.title.Replace("\\n", "\n");
+        recipeText.text = recipeSO.text.Replace("\\n", "\n");
 
         if (recipeSO.isUnlocked)
         {
@@ -64,6 +68,16 @@ public class RecipePageSetter : MonoBehaviour
             rectTransform.anchoredPosition = new Vector2((10 + width) * i, rectTransform.anchoredPosition.y);
 
             ingredientImage.GetComponent<UnrevealedIngredientDropHandler>().SetUnrevealedItem(ingredient);
+        }
+    }
+
+    private void SetHiddenRecipeChunks()
+    {
+        for (int i = 0; i < hiddenRecipeChunks.transform.childCount; i++)
+        {
+            GameObject chunk = hiddenRecipeChunks.transform.GetChild(i).gameObject;
+            chunk.SetActive(!recipeSO.isRevealed);
+
         }
     }
 }

@@ -193,6 +193,7 @@ MonoBehaviour:
   recipeIngredientsLabel: {fileID: 2616827511446619669}
   ingredientsSection: {fileID: 2382419047710255356}
   recipeText: {fileID: 1182583812841348016}
+  hiddenRecipeChunks: {fileID: 4951440357661676188}
 --- !u!1 &2382419047710255356
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7250322531618778285}
   m_Layer: 5
-  m_Name: Unknown Recipe Pieces
+  m_Name: Hidden Recipe Chunks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
