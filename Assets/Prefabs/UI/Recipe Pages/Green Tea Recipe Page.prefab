@@ -13,6 +13,10 @@ PrefabInstance:
       value: Unknown Recipe Text (Sugar) (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: unknownItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 127fc4cced8e64f4f8dbe49ef7bb06a0, type: 2}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
       propertyPath: selectedHighlightingObjects.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -127,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unknown Recipe Text (Sugar)
       objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: unknownItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 127fc4cced8e64f4f8dbe49ef7bb06a0, type: 2}
     - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
       propertyPath: selectedHighlightingObjects.Array.size
       value: 2
@@ -303,6 +311,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unknown Recipe Text (Green Tea)
       objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: unknownItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 72e3586ceac03534f8116b3b034d81fe, type: 2}
     - target: {fileID: 5695310088484583245, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -405,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unknown Recipe Text (Green Tea) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: unknownItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 72e3586ceac03534f8116b3b034d81fe, type: 2}
     - target: {fileID: 5695310088484583245, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -507,6 +523,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unknown Recipe Text (Sugar) (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: unknownItem
+      value: 
+      objectReference: {fileID: 11400000, guid: 127fc4cced8e64f4f8dbe49ef7bb06a0, type: 2}
     - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
       propertyPath: selectedHighlightingObjects.Array.size
       value: 1

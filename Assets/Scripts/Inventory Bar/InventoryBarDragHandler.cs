@@ -44,8 +44,8 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        GameObject dropTarget = UnknownRecipeTextDropHandler.GetDropTarget();
-        Debug.Log("drop target " + dropTarget.name);
+        InventoryItem requiredItem = UnknownRecipeTextDropHandler.GetRequiredItem();
+        Debug.Log("required item " + requiredItem.name);
         Destroy(draggingObject);
     }
 
