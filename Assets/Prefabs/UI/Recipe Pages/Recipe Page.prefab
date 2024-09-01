@@ -187,9 +187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ded80ad967b0474cb0fe37725469a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientImagePrefab: {fileID: 3389086880552112104, guid: 8c39035cc1c18a441a815760472edaef, type: 3}
   recipeSO: {fileID: 0}
   recipeTitle: {fileID: 7241248284964093340}
   recipeIngredientsLabel: {fileID: 2616827511446619669}
+  ingredientsSection: {fileID: 2382419047710255356}
   recipeText: {fileID: 1182583812841348016}
 --- !u!1 &2382419047710255356
 GameObject:
@@ -201,7 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 74437547145935309}
   m_Layer: 5
-  m_Name: Unknown Ingredients
+  m_Name: Ingredients Section
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

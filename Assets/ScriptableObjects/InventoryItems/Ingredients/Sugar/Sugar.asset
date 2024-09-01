@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Sugar
   m_EditorClassIdentifier: 
   uiSprite: {fileID: 21300000, guid: 97a803f4bb69d4247a80eff02ee33713, type: 3}
+  unidentifiedUiSprite: {fileID: 21300000, guid: b3efbd76ea9f3104fb08a88ca4825d17, type: 3}

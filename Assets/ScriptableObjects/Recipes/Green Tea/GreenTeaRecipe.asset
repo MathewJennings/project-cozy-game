@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isUnlocked: 1
   title: Magic Green Tea
+  ingredients:
+  - {fileID: 11400000, guid: 021d98c3bfb264146a8895bf326849a1, type: 2}
+  - {fileID: 11400000, guid: 91e7cbf251d8b64458c3798dec47a5b5, type: 2}
   text: Heat 2 cups of water in a cauldron.\n\nAdd 4 teaspoons of raw sugar.\n\nAllow
     the water to simmer as the sugar desolves.\n\nRemove from heat. Add 2 teaspoons
     of dried green tea leaves.\n\nCover and steep the tea for 2-3 minutes.\n\nStrain

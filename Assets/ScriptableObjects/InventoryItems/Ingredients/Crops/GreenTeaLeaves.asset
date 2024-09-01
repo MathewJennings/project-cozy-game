@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: GreenTeaLeaves
   m_EditorClassIdentifier: 
   uiSprite: {fileID: 21300000, guid: a693518c04b4cf0499a9a895bb303b42, type: 3}
+  unidentifiedUiSprite: {fileID: 21300000, guid: a98f764eb12ce784fbd8710fcb8e9669, type: 3}
   isDried: 0
   driedCrop: {fileID: 11400000, guid: 91e7cbf251d8b64458c3798dec47a5b5, type: 2}
