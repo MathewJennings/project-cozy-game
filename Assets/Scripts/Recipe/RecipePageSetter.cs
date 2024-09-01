@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +32,14 @@ public class RecipePageSetter : MonoBehaviour
 
     public void RevealIngredient(Ingredient ingredient)
     {
-       
+        for (int i = 0; i < hiddenRecipeChunks.transform.childCount; i++)
+        {
+            GameObject childObject = hiddenRecipeChunks.transform.GetChild(i).gameObject;
+            if (childObject.GetComponent<HiddenRecipeChunk>().GetIngredient() == ingredient)
+            {
+                childObject.SetActive(false);
+            }
+        }
     }
 
     void Start()
@@ -43,16 +51,21 @@ public class RecipePageSetter : MonoBehaviour
 
     private void SetText()
     {
-        recipeTitle.text = recipeSO.title.Replace("\\n", "\n");
-        recipeText.text = recipeSO.text.Replace("\\n", "\n");
 
         if (recipeSO.isUnlocked)
         {
+            recipeTitle.text = recipeSO.title.Replace("\\n", "\n");
+            recipeText.text = recipeSO.text.Replace("\\n", "\n");
+
             recipeTitle.color = Color.black;
             recipeIngredientsLabel.color = Color.black;
             recipeText.color = Color.black;
-        } else
+        }
+        else
         {
+            recipeTitle.text = Regex.Replace(recipeSO.title, "[^ ]", "?");
+            recipeText.text = Regex.Replace(recipeSO.text, "[^ ]", "?");
+
             recipeTitle.color = transparentGrey;
             recipeIngredientsLabel.color = transparentGrey;
             recipeText.color = transparentGrey;
@@ -84,9 +97,10 @@ public class RecipePageSetter : MonoBehaviour
     {
         for (int i = 0; i < hiddenRecipeChunks.transform.childCount; i++)
         {
-            GameObject chunk = hiddenRecipeChunks.transform.GetChild(i).gameObject;
-            chunk.SetActive(!recipeSO.isRevealed);
-
+            GameObject childObject = hiddenRecipeChunks.transform.GetChild(i).gameObject;
+            Ingredient ingredient = childObject.GetComponent<HiddenRecipeChunk>().GetIngredient();
+            int index = recipeSO.ingredients.IndexOf(ingredient);
+            childObject.SetActive(!recipeSO.ingredientRevealed[index]);
         }
     }
 }

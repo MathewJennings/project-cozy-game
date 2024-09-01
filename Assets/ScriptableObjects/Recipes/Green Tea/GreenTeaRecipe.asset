@@ -13,18 +13,14 @@ MonoBehaviour:
   m_Name: GreenTeaRecipe
   m_EditorClassIdentifier: 
   isUnlocked: 1
+  recipePagePrefab: {fileID: 3452793082635967192, guid: 286f150b1efc41142a08c9995ebdb865, type: 3}
   title: Magic Green Tea
-  ingredients:
-  - {fileID: 11400000, guid: 021d98c3bfb264146a8895bf326849a1, type: 2}
-  - {fileID: 11400000, guid: 91e7cbf251d8b64458c3798dec47a5b5, type: 2}
   text: Heat 2 cups of water in a cauldron.\n\nAdd 4 teaspoons of raw sugar.\n\nAllow
     the water to simmer as the sugar desolves.\n\nRemove from heat. Add 2 teaspoons
     of dried green tea leaves.\n\nCover and steep the tea for 2-3 minutes.\n\nStrain
     through a sieve. Serve hot or warm, with a squeeze of lemon.
   isRevealed: 0
-  unrevealedTitle: Magic ????? ???
-  unrevealedText: Heat 2 cups of water in a cauldron.\n\nAdd 4 teaspoons of ??? ?????.\n\nAllow
-    the water to simmer as the ????? desolves.\n\nRemove from heat. Add 2 teaspoons
-    of looseleaf ????? ??? leaves.\n\nCover and steep the ??? for 2-3 minutes.\n\nStrain
-    through a sieve. Serve hot or warm, with a squeeze of lemon.
-  recipePagePrefab: {fileID: 3452793082635967192, guid: 286f150b1efc41142a08c9995ebdb865, type: 3}
+  ingredients:
+  - {fileID: 11400000, guid: 021d98c3bfb264146a8895bf326849a1, type: 2}
+  - {fileID: 11400000, guid: 91e7cbf251d8b64458c3798dec47a5b5, type: 2}
+  ingredientRevealed: 0000

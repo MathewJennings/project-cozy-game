@@ -7,7 +7,6 @@ public abstract class Recipe : ScriptableObject
     public GameObject recipePagePrefab;
     public string title;
     public string text;
-    public bool isRevealed;
     public List<Ingredient> ingredients;
     public List<bool> ingredientRevealed;
 }

@@ -46,6 +46,7 @@ public class UnrevealedIngredientDropHandler : MonoBehaviour, IPointerEnterHandl
         recipeSO.ingredientRevealed[revealedIndex] = true;
         gameObject.GetComponent<Image>().sprite = unrevealedIngredient.uiSprite;
         selectedHighlightingObject.SetActive(false);
+        recipePageSetter.RevealIngredient(unrevealedIngredient);
     }
 
     private void Start()
