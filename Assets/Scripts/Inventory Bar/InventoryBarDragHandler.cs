@@ -10,6 +10,8 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
 
     private static GameObject draggingObject;
 
+    private InventoryItem inventoryItem;
+
     void Start()
     {
         FindObjectOfType<GamePauser>().RegisterObserver(this);
@@ -23,6 +25,11 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
         {
             gamePauser.DeregisterObserver(this);
         }
+    }
+
+    public void SetInventoryItem(InventoryItem inventoryItem)
+    {
+        this.inventoryItem = inventoryItem;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -45,7 +52,13 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
     public void OnEndDrag(PointerEventData eventData)
     {
         InventoryItem requiredItem = UnknownRecipeTextDropHandler.GetRequiredItem();
-        Debug.Log("required item " + requiredItem.name);
+        if (requiredItem == inventoryItem)
+        {
+            Debug.Log("Successful drag of " + requiredItem.name);
+        } else if (requiredItem != null)
+        {
+            Debug.Log("required item " + requiredItem.name);
+        }
         Destroy(draggingObject);
     }
 

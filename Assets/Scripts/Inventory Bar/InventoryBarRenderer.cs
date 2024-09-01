@@ -35,19 +35,22 @@ public class InventoryBarRenderer : MonoBehaviour
     private void RenderInventoryItem(int i)
     {
         Inventory inventory = playerInventory.GetInventorySO();
+        Transform inventorySlot = transform.GetChild(i);
         if (i < inventory.Count())
         {
             Inventory.InventoryItemAndAmount itemAndCount = inventory.Get(i);
-            transform.GetChild(i).Find("Image").GetComponent<Image>().sprite = itemAndCount.GetInventoryItem().uiSprite;
+            InventoryItem inventoryItem = itemAndCount.GetInventoryItem();
+            inventorySlot.Find("Image").GetComponent<Image>().sprite = inventoryItem.uiSprite;
+            inventorySlot.GetComponent<InventoryBarDragHandler>().SetInventoryItem(inventoryItem);
 
-            TextMeshProUGUI amountText = transform.GetChild(i).Find("Quantity").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI amountText = inventorySlot.Find("Quantity").GetComponent<TextMeshProUGUI>();
             int amount = itemAndCount.GetAmount();
             amountText.text = amount.ToString();
             amountText.gameObject.SetActive(amount > 1);
         } else
         {
-            transform.GetChild(i).Find("Image").GetComponent<Image>().sprite = null;
-            transform.GetChild(i).Find("Quantity").GetComponent<TextMeshProUGUI>().gameObject.SetActive(false);
+            inventorySlot.Find("Image").GetComponent<Image>().sprite = null;
+            inventorySlot.Find("Quantity").GetComponent<TextMeshProUGUI>().gameObject.SetActive(false);
         }
     }
 

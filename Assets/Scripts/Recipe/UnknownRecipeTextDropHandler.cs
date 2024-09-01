@@ -14,7 +14,14 @@ public class UnknownRecipeTextDropHandler : MonoBehaviour, IPointerEnterHandler,
 
     private static UnknownRecipeTextDropHandler hoverTarget;
 
-    public static InventoryItem GetRequiredItem() { return hoverTarget.unknownItem; }
+    public static InventoryItem GetRequiredItem()
+    {
+        if (hoverTarget == null)
+        {
+            return null;
+        }
+        return hoverTarget.unknownItem;
+    }
 
     private void Start()
     {
