@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryBarDragHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPauseObserver
+public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPauseObserver
 {
     [SerializeField]
     private GameObject gameObjectToDrag; // if null, this object doesn't support dragging
 
     private static GameObject draggingObject;
-    private static GameObject hoverTarget;
 
     void Start()
     {
@@ -24,21 +23,6 @@ public class InventoryBarDragHandler : MonoBehaviour, IPointerEnterHandler, IPoi
         {
             gamePauser.DeregisterObserver(this);
         }
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        hoverTarget = this.gameObject;
-        Debug.Log("hover target " + hoverTarget);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        if (hoverTarget == this.gameObject)
-        {
-            hoverTarget = null;
-        }
-        Debug.Log("hover target " + hoverTarget);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -60,6 +44,8 @@ public class InventoryBarDragHandler : MonoBehaviour, IPointerEnterHandler, IPoi
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        GameObject dropTarget = UnknownRecipeTextDropHandler.GetDropTarget();
+        Debug.Log("drop target " + dropTarget.name);
         Destroy(draggingObject);
     }
 

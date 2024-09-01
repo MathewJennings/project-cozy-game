@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unknown Recipe Text (Sugar) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: selectedHighlightingObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: selectedHighlightingObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 497614671285830211}
     - target: {fileID: 5695310088484583245, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -97,6 +105,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+--- !u!1 &1384743020178846028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2136552974971664696, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+  m_PrefabInstance: {fileID: 1049646494594582644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4726767181543063353 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5695310088484583245, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
@@ -114,6 +127,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unknown Recipe Text (Sugar)
       objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: selectedHighlightingObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: selectedHighlightingObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1384743020178846028}
     - target: {fileID: 5695310088484583245, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -199,6 +220,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+--- !u!1 &497614671285830211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2136552974971664696, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+  m_PrefabInstance: {fileID: 1963972358783810427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6073280216337009718 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5695310088484583245, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
@@ -481,6 +507,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unknown Recipe Text (Sugar) (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: selectedHighlightingObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831064580040469119, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
+      propertyPath: selectedHighlightingObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1384743020178846028}
     - target: {fileID: 5695310088484583245, guid: dd92d24b6a1665147b809e95d26ed364, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
