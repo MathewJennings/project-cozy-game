@@ -18,7 +18,8 @@ public class InventoryBarRenderer : MonoBehaviour
         {
             GameObject newSlot = Instantiate(inventorySlot, this.transform);
             RectTransform rectTransform = newSlot.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(10 + 80 * i, rectTransform.anchoredPosition.y);
+            float width = rectTransform.rect.width;
+            rectTransform.anchoredPosition = new Vector2(10 + width/2 + (10 + width)*i, rectTransform.anchoredPosition.y);
         }
     }
 

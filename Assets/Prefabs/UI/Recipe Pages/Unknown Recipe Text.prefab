@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5695310088484583245}
   - component: {fileID: 5099276941736156076}
   - component: {fileID: 7923595851081572834}
-  - component: {fileID: 4794944747974787016}
   m_Layer: 5
   m_Name: Unknown Recipe Text
   m_TagString: Untagged
@@ -76,15 +75,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4794944747974787016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2769618557225708027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c512f722f1f04a469e3ae5225f87f43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
