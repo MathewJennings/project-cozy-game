@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPauseObserver
+public class InventoryBarDragHandler : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPauseObserver
 {
     [SerializeField]
     private GameObject gameObjectToDrag; // if null, this object doesn't support dragging
@@ -11,11 +11,11 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
     private static GameObject draggingObject;
 
     private InventoryItem inventoryItem;
+    private bool gamePaused;
 
     void Start()
     {
         FindObjectOfType<GamePauser>().RegisterObserver(this);
-        this.enabled = false;
     }
 
     private void OnDestroy()
@@ -32,9 +32,18 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
         this.inventoryItem = inventoryItem;
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!gamePaused)
+        {
+            // TODO: find a better way to get access to the PlayerInventory
+            GameObject.Find("Player").GetComponent<PlayerInventory>().Equip(inventoryItem);
+        }
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (gameObjectToDrag != null)
+        if (gamePaused && gameObjectToDrag != null)
         {
             Canvas canvas = GetComponentInParent<Canvas>();
             draggingObject = Instantiate(gameObjectToDrag, canvas.transform);
@@ -46,7 +55,10 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
 
     public void OnDrag(PointerEventData eventData)
     {
-        draggingObject.transform.Translate(eventData.delta);
+        if (gamePaused)
+        {
+            draggingObject.transform.Translate(eventData.delta);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -69,11 +81,11 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
 
     public void NotifyGamePaused()
     {
-        this.enabled = true;
+        gamePaused = true;
     }
 
     public void NotifyGameResumed()
     {
-        this.enabled = false;
+        gamePaused = false;
     }
 }

@@ -48,16 +48,84 @@ public class PlayerInventory : MonoBehaviour
         return inventory.Get(selectedIndex);
     }
 
+    public void Equip(InventoryItem inventoryItem)
+    {
+        if (!inventory.Contains(inventoryItem))
+        {
+            return;
+        }
+        int index = inventory.IndexOf(inventoryItem);
+        selectedIndex = index;
+    }
+
     void Update()
+    {
+        CheckMouseScroll();
+        CheckNumberKeysDown();
+    }
+
+    private void CheckMouseScroll()
     {
         if (Input.mouseScrollDelta.y > 0)
         {
             selectedIndex = Mod(selectedIndex - 1, inventorySize);
-        }
-        else if (Input.mouseScrollDelta.y < 0)
+        } else if (Input.mouseScrollDelta.y < 0)
         {
             selectedIndex = Mod(selectedIndex + 1, inventorySize);
         }
+    }
+
+    private void CheckNumberKeysDown()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            selectedIndex = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            selectedIndex = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            selectedIndex = 2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            selectedIndex = 3;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            selectedIndex = 4;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            selectedIndex = 5;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            selectedIndex = 6;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            selectedIndex = 7;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            selectedIndex = 8;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            selectedIndex = 9;
+        }
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            selectedIndex = 10;
+        }
+        if (Input.GetKeyDown(KeyCode.Equals))
+        {
+            selectedIndex = 11;
+        }
+
     }
 
     private int Mod(int x, int m)

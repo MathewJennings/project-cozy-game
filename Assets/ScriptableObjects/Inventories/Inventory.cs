@@ -41,6 +41,13 @@ public class Inventory : ScriptableObject
         return found != null;
     }
 
+    public int IndexOf(InventoryItem item)
+    {
+        InventoryItemAndAmount found = inventoryItems.Find(itemAndAmount =>
+            itemAndAmount.GetInventoryItem().Equals(item));
+        return inventoryItems.IndexOf(found);
+    }
+
     public void AddItem(InventoryItemAndAmount item)
     {
         InventoryItemAndAmount deepCopy = new InventoryItemAndAmount(item.GetInventoryItem(), item.GetAmount());
