@@ -92,7 +92,8 @@ public class RecipeBookManager : MonoBehaviour
         if (unlockedRecipes.Count >= (currentPageNumber + 1) * 2)
         {
             turnToNextPageButton.SetActive(true);
-        } else
+        }
+        else
         {
             turnToNextPageButton.SetActive(false);
         }
@@ -103,7 +104,8 @@ public class RecipeBookManager : MonoBehaviour
         if (currentPageNumber > 0)
         {
             turnToPreviousPageButton.SetActive(true);
-        } else
+        }
+        else
         {
             turnToPreviousPageButton.SetActive(false);
         }
