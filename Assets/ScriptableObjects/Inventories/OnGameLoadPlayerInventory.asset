@@ -17,3 +17,5 @@ MonoBehaviour:
     amount: 1
   - inventoryItem: {fileID: 11400000, guid: 86675ab4e7360c144bb06dea6cc5839c, type: 2}
     amount: 2
+  - inventoryItem: {fileID: 11400000, guid: 021d98c3bfb264146a8895bf326849a1, type: 2}
+    amount: 1

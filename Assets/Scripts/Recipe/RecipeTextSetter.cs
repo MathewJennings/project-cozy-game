@@ -10,7 +10,10 @@ public class RecipeTextSetter : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI recipeTitle;
-    
+
+    [SerializeField]
+    private TextMeshProUGUI recipeIngredientsLabel;
+
     [SerializeField]
     private TextMeshProUGUI recipeText;
 
@@ -24,11 +27,13 @@ public class RecipeTextSetter : MonoBehaviour
         if (recipeSO.isUnlocked)
         {
             recipeTitle.color = Color.black;
+            recipeIngredientsLabel.color = Color.black;
             recipeText.color = Color.black;
         }
         else
         {
             recipeTitle.color = transparentGrey;
+            recipeIngredientsLabel.color = transparentGrey;
             recipeText.color = transparentGrey;
         }
     }
