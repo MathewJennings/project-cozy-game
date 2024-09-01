@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UnknownRecipeTextDropHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UnrevealedIngredientDropHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     [SerializeField]
-    private InventoryItem unknownItem;
+    private InventoryItem unrevealedItem;
 
     [SerializeField]
     private List<GameObject> selectedHighlightingObjects;
 
-    private static UnknownRecipeTextDropHandler hoverTarget;
+    private static UnrevealedIngredientDropHandler hoverTarget;
+
+    public void SetUnrevealedItem(InventoryItem unrevealedItem)
+    {
+        this.unrevealedItem = unrevealedItem;
+    }
 
     public static InventoryItem GetRequiredItem()
     {
@@ -20,7 +25,7 @@ public class UnknownRecipeTextDropHandler : MonoBehaviour, IPointerEnterHandler,
         {
             return null;
         }
-        return hoverTarget.unknownItem;
+        return hoverTarget.unrevealedItem;
     }
 
     private void Start()

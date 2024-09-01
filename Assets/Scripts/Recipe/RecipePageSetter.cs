@@ -62,6 +62,8 @@ public class RecipePageSetter : MonoBehaviour
             RectTransform rectTransform = ingredientImage.GetComponent<RectTransform>();
             float width = rectTransform.rect.width;
             rectTransform.anchoredPosition = new Vector2((10 + width) * i, rectTransform.anchoredPosition.y);
+
+            ingredientImage.GetComponent<UnrevealedIngredientDropHandler>().SetUnrevealedItem(ingredient);
         }
     }
 }

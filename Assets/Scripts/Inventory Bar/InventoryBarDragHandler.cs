@@ -51,7 +51,7 @@ public class InventoryBarDragHandler : MonoBehaviour, IBeginDragHandler, IDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        InventoryItem requiredItem = UnknownRecipeTextDropHandler.GetRequiredItem();
+        InventoryItem requiredItem = UnrevealedIngredientDropHandler.GetRequiredItem();
         if (requiredItem == inventoryItem)
         {
             Debug.Log("Successful drag of " + requiredItem.name);
