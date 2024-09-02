@@ -73,6 +73,7 @@ public class InventoryBarRenderer : MonoBehaviour
         inventorySlot.Find("Image").GetComponent<Image>().sprite = inventoryItem.uiSprite;
         inventorySlot.GetComponent<InventorySlotEquipper>().SetInventoryItem(inventoryItem);
         inventorySlot.GetComponent<InventoryBarPauseDragHandler>().SetInventoryItem(inventoryItem);
+        inventorySlot.GetComponent<InventoryBarBrewingStationDragHandler>().SetInventoryItem(inventoryItem);
     }
 
     private void SetInventorySlotAmount(Transform inventorySlot, int amount)

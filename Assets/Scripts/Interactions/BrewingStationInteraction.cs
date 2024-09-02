@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BrewingStationInteraction : MonoBehaviour, IInteractable
 {
@@ -8,6 +9,7 @@ public class BrewingStationInteraction : MonoBehaviour, IInteractable
     private GameObject brewingInterface;
 
     private bool isBrewingInterfaceEnabled;
+    private InventoryBarBrewingStationDragHandler[] inventoryBarBrewingStationDragHandlers;
 
     void Start()
     {
@@ -18,10 +20,15 @@ public class BrewingStationInteraction : MonoBehaviour, IInteractable
     {
         isBrewingInterfaceEnabled = !isBrewingInterfaceEnabled;
         brewingInterface.SetActive(isBrewingInterfaceEnabled);
-        InventoryBarBrewingStationDragHandler[] dragHandlers = GameObject.FindObjectsOfType<InventoryBarBrewingStationDragHandler>();
-        foreach(InventoryBarBrewingStationDragHandler dragHandler in dragHandlers)
+        LazyLoadDragHandlers();
+        foreach (InventoryBarBrewingStationDragHandler dragHandler in inventoryBarBrewingStationDragHandlers)
         {
             dragHandler.enabled = isBrewingInterfaceEnabled;
         }
+    }
+
+    private void LazyLoadDragHandlers()
+    {
+        inventoryBarBrewingStationDragHandlers ??= GameObject.FindObjectsOfType<InventoryBarBrewingStationDragHandler>();
     }
 }

@@ -62,9 +62,6 @@ public class InventoryBarPauseDragHandler : MonoBehaviour, IBeginDragHandler, ID
             {
                 Debug.Log("Successful drag of " + inventoryItem.name);
                 dropHandler.RevealIngredient();
-            } else if (unrevealedIngredient != null)
-            {
-                Debug.Log("required ingredient " + unrevealedIngredient.name);
             }
         }
         Destroy(draggingObject);

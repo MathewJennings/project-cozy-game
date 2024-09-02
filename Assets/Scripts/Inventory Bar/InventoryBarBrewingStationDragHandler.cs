@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryBarBrewingStationDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventoryBarBrewingStationDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPauseObserver
 {
     [SerializeField]
     private GameObject gameObjectToDrag; // if null, this object doesn't support dragging
@@ -11,6 +11,22 @@ public class InventoryBarBrewingStationDragHandler : MonoBehaviour, IBeginDragHa
     private static GameObject draggingObject;
 
     private InventoryItem inventoryItem;
+
+    private void Start()
+    {
+        // This script should be enabled by BrewingStationInteraction.cs
+        this.enabled = false;
+        FindObjectOfType<GamePauser>().RegisterObserver(this);
+    }
+
+    private void OnDestroy()
+    {
+        GamePauser gamePauser = FindObjectOfType<GamePauser>();
+        if (gamePauser != null)
+        {
+            gamePauser.DeregisterObserver(this);
+        }
+    }
 
     public void SetInventoryItem(InventoryItem inventoryItem)
     {
@@ -42,13 +58,19 @@ public class InventoryBarBrewingStationDragHandler : MonoBehaviour, IBeginDragHa
             Ingredient unrevealedIngredient = dropHandler.GetUnrevealedIngredient();
             if (unrevealedIngredient == inventoryItem)
             {
-                Debug.Log("Successful drag of " + inventoryItem.name);
                 dropHandler.RevealIngredient();
-            } else if (unrevealedIngredient != null)
-            {
-                Debug.Log("required ingredient " + unrevealedIngredient.name);
             }
         }
         Destroy(draggingObject);
+    }
+
+    public void NotifyGamePaused()
+    {
+        this.enabled = false;
+    }
+
+    public void NotifyGameResumed()
+    {
+        this.enabled = true;
     }
 }
