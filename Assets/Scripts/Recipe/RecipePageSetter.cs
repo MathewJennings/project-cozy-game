@@ -34,10 +34,11 @@ public class RecipePageSetter : MonoBehaviour
     {
         for (int i = 0; i < hiddenRecipeChunks.transform.childCount; i++)
         {
-            GameObject childObject = hiddenRecipeChunks.transform.GetChild(i).gameObject;
-            if (childObject.GetComponent<HiddenRecipeChunk>().GetIngredient() == ingredient)
+            GameObject chunkGameObject = hiddenRecipeChunks.transform.GetChild(i).gameObject;
+            HiddenRecipeChunk hiddenRecipeChunk = chunkGameObject.GetComponent<HiddenRecipeChunk>();
+            if (hiddenRecipeChunk.GetIngredient() == ingredient)
             {
-                childObject.SetActive(false);
+                hiddenRecipeChunk.RevealText();
             }
         }
     }
@@ -97,10 +98,18 @@ public class RecipePageSetter : MonoBehaviour
     {
         for (int i = 0; i < hiddenRecipeChunks.transform.childCount; i++)
         {
-            GameObject childObject = hiddenRecipeChunks.transform.GetChild(i).gameObject;
-            Ingredient ingredient = childObject.GetComponent<HiddenRecipeChunk>().GetIngredient();
+            GameObject chunkGameObject = hiddenRecipeChunks.transform.GetChild(i).gameObject;
+            HiddenRecipeChunk hiddenRecipeChunk = chunkGameObject.GetComponent<HiddenRecipeChunk>();
+            Ingredient ingredient = hiddenRecipeChunk.GetIngredient();
             int index = recipeSO.ingredients.IndexOf(ingredient);
-            childObject.SetActive(!recipeSO.ingredientRevealed[index]);
+            if (recipeSO.ingredientRevealed[index])
+            {
+                hiddenRecipeChunk.RevealText();
+            }
+            else
+            {
+                hiddenRecipeChunk.HideText();
+            }
         }
     }
 }

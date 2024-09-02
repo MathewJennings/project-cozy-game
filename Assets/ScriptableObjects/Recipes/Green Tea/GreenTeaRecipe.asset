@@ -19,8 +19,7 @@ MonoBehaviour:
     the water to simmer as the sugar desolves.\n\nRemove from heat. Add 2 teaspoons
     of dried green tea leaves.\n\nCover and steep the tea for 2-3 minutes.\n\nStrain
     through a sieve. Serve hot or warm, with a squeeze of lemon.
-  isRevealed: 0
   ingredients:
   - {fileID: 11400000, guid: 021d98c3bfb264146a8895bf326849a1, type: 2}
   - {fileID: 11400000, guid: 91e7cbf251d8b64458c3798dec47a5b5, type: 2}
-  ingredientRevealed: 0000
+  ingredientRevealed: 0101
