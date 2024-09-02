@@ -11,6 +11,7 @@ public class InventoryBarBrewingStationDragHandler : MonoBehaviour, IBeginDragHa
     private static GameObject draggingObject;
 
     private InventoryItem inventoryItem;
+    private GameObject brewingInterface;
 
     private void Start()
     {
@@ -33,15 +34,20 @@ public class InventoryBarBrewingStationDragHandler : MonoBehaviour, IBeginDragHa
         this.inventoryItem = inventoryItem;
     }
 
+    public void SetBrewingInterface(GameObject brewingInterface)
+    {
+        this.brewingInterface = brewingInterface;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (gameObjectToDrag != null)
         {
-            Canvas canvas = GetComponentInParent<Canvas>();
+            Canvas canvas = brewingInterface.GetComponent<Canvas>();
             draggingObject = Instantiate(gameObjectToDrag, canvas.transform);
             draggingObject.transform.position = Input.mousePosition;
-            CanvasGroup canvasGroup = draggingObject.AddComponent<CanvasGroup>();
-            canvasGroup.blocksRaycasts = false;
+            //CanvasGroup canvasGroup = draggingObject.AddComponent<CanvasGroup>();
+            //canvasGroup.blocksRaycasts = false;
         }
     }
 
@@ -52,16 +58,10 @@ public class InventoryBarBrewingStationDragHandler : MonoBehaviour, IBeginDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        UnrevealedIngredientDropHandler dropHandler = UnrevealedIngredientDropHandler.GetCurrentlyHovered();
-        if (dropHandler != null)
-        {
-            Ingredient unrevealedIngredient = dropHandler.GetUnrevealedIngredient();
-            if (unrevealedIngredient == inventoryItem)
-            {
-                dropHandler.RevealIngredient();
-            }
-        }
-        Destroy(draggingObject);
+        //draggingObject.component
+        //Rigidbody2D rigidbody2D = draggingObject.AddComponent<Rigidbody2D>();
+        //rigidbody2D.gravityScale = 1;
+        //BoxCollider2D boxCollider2D = draggingObject.AddComponent<BoxCollider2D>();
     }
 
     public void NotifyGamePaused()

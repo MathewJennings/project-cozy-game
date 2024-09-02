@@ -24,6 +24,7 @@ public class BrewingStationInteraction : MonoBehaviour, IInteractable
         foreach (InventoryBarBrewingStationDragHandler dragHandler in inventoryBarBrewingStationDragHandlers)
         {
             dragHandler.enabled = isBrewingInterfaceEnabled;
+            dragHandler.SetBrewingInterface(brewingInterface);
         }
     }
 
