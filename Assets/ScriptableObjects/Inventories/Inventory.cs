@@ -103,6 +103,8 @@ public class Inventory : ScriptableObject
             this.amount = amount;
         }
 
+        public InventoryItemAndAmount(InventoryItemAndAmount toCopy) : this(toCopy.inventoryItem, toCopy.amount) { }
+
         public InventoryItem GetInventoryItem() { return inventoryItem; }
         public int GetAmount() { return amount; }
 
@@ -114,6 +116,21 @@ public class Inventory : ScriptableObject
         public void RemoveAmount(int amount)
         {
             this.amount -= amount;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            InventoryItemAndAmount that = obj as InventoryItemAndAmount;
+            return this.inventoryItem == that.inventoryItem && this.amount == that.amount;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(inventoryItem, amount);
         }
     }
 }

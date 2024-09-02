@@ -56,6 +56,7 @@ public class PlayerInventory : MonoBehaviour
         }
         int index = inventory.IndexOf(inventoryItem);
         selectedIndex = index;
+        Debug.Log("RE-RENDER SELECTED " + selectedIndex);
     }
 
     void Update()

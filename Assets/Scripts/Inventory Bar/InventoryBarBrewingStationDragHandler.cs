@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryBarDragHandler : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IPauseObserver
+public class InventoryBarBrewingStationDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField]
     private GameObject gameObjectToDrag; // if null, this object doesn't support dragging
@@ -11,39 +11,15 @@ public class InventoryBarDragHandler : MonoBehaviour, IPointerClickHandler, IBeg
     private static GameObject draggingObject;
 
     private InventoryItem inventoryItem;
-    private bool gamePaused;
-
-    void Start()
-    {
-        FindObjectOfType<GamePauser>().RegisterObserver(this);
-    }
-
-    private void OnDestroy()
-    {
-        GamePauser gamePauser = FindObjectOfType<GamePauser>();
-        if (gamePauser != null)
-        {
-            gamePauser.DeregisterObserver(this);
-        }
-    }
 
     public void SetInventoryItem(InventoryItem inventoryItem)
     {
         this.inventoryItem = inventoryItem;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (!gamePaused)
-        {
-            // TODO: find a better way to get access to the PlayerInventory
-            GameObject.Find("Player").GetComponent<PlayerInventory>().Equip(inventoryItem);
-        }
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (gamePaused && gameObjectToDrag != null)
+        if (gameObjectToDrag != null)
         {
             Canvas canvas = GetComponentInParent<Canvas>();
             draggingObject = Instantiate(gameObjectToDrag, canvas.transform);
@@ -55,10 +31,7 @@ public class InventoryBarDragHandler : MonoBehaviour, IPointerClickHandler, IBeg
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (gamePaused)
-        {
-            draggingObject.transform.Translate(eventData.delta);
-        }
+        draggingObject.transform.Translate(eventData.delta);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -77,15 +50,5 @@ public class InventoryBarDragHandler : MonoBehaviour, IPointerClickHandler, IBeg
             }
         }
         Destroy(draggingObject);
-    }
-
-    public void NotifyGamePaused()
-    {
-        gamePaused = true;
-    }
-
-    public void NotifyGameResumed()
-    {
-        gamePaused = false;
     }
 }
