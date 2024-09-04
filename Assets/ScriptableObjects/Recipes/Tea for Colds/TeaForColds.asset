@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4007b9e07b17b3341ae8d2eaef6e9abe, type: 3}
-  m_Name: Recipe2
+  m_Name: TeaForColds
   m_EditorClassIdentifier: 
   title: Recipe 2
   text: Do the thing
