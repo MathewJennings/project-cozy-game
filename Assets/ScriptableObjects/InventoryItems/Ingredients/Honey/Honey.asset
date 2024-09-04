@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106f3ad90327b124e92519d431b19146, type: 3}
   m_Name: Honey
   m_EditorClassIdentifier: 
-  uiSprite: {fileID: 21300000, guid: 97a803f4bb69d4247a80eff02ee33713, type: 3}
-  unidentifiedUiSprite: {fileID: 21300000, guid: b3efbd76ea9f3104fb08a88ca4825d17, type: 3}
+  uiSprite: {fileID: 21300000, guid: a38fb8c437aefaa4a9b29d1d10d825a3, type: 3}
+  unidentifiedUiSprite: {fileID: 21300000, guid: ab206bfc6a02eed4a9bdcdc2dacb22ad, type: 3}
