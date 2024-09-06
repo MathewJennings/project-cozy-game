@@ -9,7 +9,7 @@ public class BrewingStationInteraction : MonoBehaviour, IInteractable
     private GameObject brewingInterface;
 
     private bool isBrewingInterfaceEnabled;
-    private InventoryBarBrewingStationDragHandler[] inventoryBarBrewingStationDragHandlers;
+    private ShelfIngredientDragHandler[] inventoryBarBrewingStationDragHandlers;
 
     void Start()
     {
@@ -19,17 +19,6 @@ public class BrewingStationInteraction : MonoBehaviour, IInteractable
     public void Interact(GameObject player)
     {
         isBrewingInterfaceEnabled = !isBrewingInterfaceEnabled;
-        brewingInterface.SetActive(isBrewingInterfaceEnabled);
-        LazyLoadDragHandlers();
-        foreach (InventoryBarBrewingStationDragHandler dragHandler in inventoryBarBrewingStationDragHandlers)
-        {
-            dragHandler.enabled = isBrewingInterfaceEnabled;
-            dragHandler.SetBrewingInterface(brewingInterface);
-        }
-    }
-
-    private void LazyLoadDragHandlers()
-    {
-        inventoryBarBrewingStationDragHandlers ??= GameObject.FindObjectsOfType<InventoryBarBrewingStationDragHandler>();
+        
     }
 }

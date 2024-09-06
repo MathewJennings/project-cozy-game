@@ -45,9 +45,13 @@ public class ShelfIngredientSpawner : MonoBehaviour
     {
         SpriteRenderer ingredientSpriteRenderer = shelfIngredient.GetComponent<SpriteRenderer>();
         ingredientSpriteRenderer.sprite = sprite;
+        shelfIngredient.name = sprite.name;
+
         float width = ingredientSpriteRenderer.sprite.rect.width;
         float targetScale = targetSizeInPixels / width;
         shelfIngredient.transform.localScale = new Vector3(targetScale, targetScale, 1f);
+        shelfIngredient.GetComponent<BoxCollider2D>().size = new Vector2(1/targetScale, 1/targetScale);
+        shelfIngredient.GetComponent<Rigidbody2D>().gravityScale = 0f;
     }
 
     private void PositionShelfIngredients()
