@@ -17,5 +17,15 @@ MonoBehaviour:
     amount: 1
   - inventoryItem: {fileID: 11400000, guid: 86675ab4e7360c144bb06dea6cc5839c, type: 2}
     amount: 2
+  - inventoryItem: {fileID: 11400000, guid: 91e7cbf251d8b64458c3798dec47a5b5, type: 2}
+    amount: 1
+  - inventoryItem: {fileID: 11400000, guid: f9aa97ea832c6e345a655ff8c7e62127, type: 2}
+    amount: 1
+  - inventoryItem: {fileID: 11400000, guid: 72e3586ceac03534f8116b3b034d81fe, type: 2}
+    amount: 1
   - inventoryItem: {fileID: 11400000, guid: 021d98c3bfb264146a8895bf326849a1, type: 2}
+    amount: 1
+  - inventoryItem: {fileID: 11400000, guid: 5ecf043ad25d453458972f32520fc601, type: 2}
+    amount: 1
+  - inventoryItem: {fileID: 11400000, guid: 52762804b1cf1d0459b5b5ebf85b89b6, type: 2}
     amount: 1
