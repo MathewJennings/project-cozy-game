@@ -23,6 +23,9 @@ public class ShelfIngredientDragHandler : MonoBehaviour, IBeginDragHandler, IDra
     {
         mouseClickOffset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(eventData.position);
         GetComponent<BoxCollider2D>().enabled = false;
+        Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D.gravityScale = 0;
+        rigidbody2D.velocity = Vector2.zero;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -40,6 +43,7 @@ public class ShelfIngredientDragHandler : MonoBehaviour, IBeginDragHandler, IDra
         else
         {
             shelfIngredientSpawner.RemoveShelfIngredient(this.gameObject);
+            GetComponent<Rigidbody2D>().gravityScale = 1;
         }
     }
 
