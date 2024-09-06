@@ -21,6 +21,39 @@ public class ShelfIngredientSpawner : MonoBehaviour
 
     private List<GameObject> shelfIngredients = new();
 
+    public void RemoveShelfIngredient(GameObject shelfIngredient)
+    {
+        if (shelfIngredients.Contains(shelfIngredient))
+        {
+            shelfIngredient.transform.parent = null;
+            shelfIngredients.Remove(shelfIngredient);
+        }
+        PositionShelfIngredients();
+    }
+
+    public void AddShelfIngredient(GameObject shelfIngredient)
+    {
+        if (shelfIngredients.Contains(shelfIngredient))
+        {
+            shelfIngredients.Remove(shelfIngredient);
+        }
+        shelfIngredient.transform.parent = ingredientsObject.transform;
+        Vector3 localPos = shelfIngredient.transform.localPosition;
+        for (int i = 0; i < shelfIngredients.Count; i++)
+        {
+            if (shelfIngredients[i].transform.localPosition.x > localPos.x)
+            {
+                shelfIngredients.Insert(i, shelfIngredient);
+                break;
+            }
+        }
+        if (!shelfIngredients.Contains(shelfIngredient))
+        {
+            shelfIngredients.Add(shelfIngredient);
+        }
+        PositionShelfIngredients();
+    }
+
     void Start()
     {
         for (int i = 0; i < playerInventory.Count(); i++)
@@ -32,6 +65,7 @@ public class ShelfIngredientSpawner : MonoBehaviour
             }
         }
         PositionShelfIngredients();
+        backgroundObject.transform.localScale = new Vector3(shelfIngredients.Count, 1, 1);
     }
 
     private void SpawnShelfIngredient(InventoryItem inventoryItem)
@@ -39,6 +73,7 @@ public class ShelfIngredientSpawner : MonoBehaviour
         GameObject shelfIngredient = Instantiate(shelfIngredientPrefab, ingredientsObject.transform);
         shelfIngredients.Add(shelfIngredient);
         SetIngredientSprite(shelfIngredient, inventoryItem.uiSprite);
+        PrepareIngredientDragHandler(shelfIngredient);
     }
 
     private void SetIngredientSprite(GameObject shelfIngredient, Sprite sprite)
@@ -54,12 +89,19 @@ public class ShelfIngredientSpawner : MonoBehaviour
         shelfIngredient.GetComponent<Rigidbody2D>().gravityScale = 0f;
     }
 
+    private void PrepareIngredientDragHandler(GameObject shelfIngredient)
+    {
+        ShelfIngredientDragHandler shelfIngredientDragHandler = shelfIngredient.GetComponent<ShelfIngredientDragHandler>();
+        shelfIngredientDragHandler.SetShelf(backgroundObject);
+        shelfIngredientDragHandler.SetShelfIngredientSpawner(this);
+    }
+
     private void PositionShelfIngredients()
     {
         for (int i = 0; i < shelfIngredients.Count; i++)
         {
-            shelfIngredients[i].transform.localPosition = new Vector3(i - shelfIngredients.Count / 2, 0, 0);
+            float localX = i - shelfIngredients.Count / 2 + (shelfIngredients.Count % 2 == 0 ? 0.5f: 0f);
+            shelfIngredients[i].transform.localPosition = new Vector3(localX, 0, 0);
         }
-        backgroundObject.transform.localScale = new Vector3(shelfIngredients.Count, 1, 1);
     }
 }
