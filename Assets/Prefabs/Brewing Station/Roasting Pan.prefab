@@ -165,8 +165,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4663263610519840328}
-  - {fileID: 6210060360731167262}
   - {fileID: 3650492602142365343}
+  - {fileID: 6210060360731167262}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8174784048461561300
@@ -239,7 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 616ed73074536014c837c964ab530345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roastingSpeed: 10
   roastedPercentage: 0.65
   burntPercentage: 0.85
 --- !u!1 &2404868676886900422

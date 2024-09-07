@@ -19,7 +19,6 @@ public class IngredientDragHandler : MonoBehaviour, IBeginDragHandler, IDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Begin Drag");
         mouseClickOffset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(eventData.position);
         GetComponent<BoxCollider2D>().enabled = false;
         Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
