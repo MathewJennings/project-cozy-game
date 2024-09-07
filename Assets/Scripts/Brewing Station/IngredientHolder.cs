@@ -35,7 +35,10 @@ public class IngredientHolder : MonoBehaviour
         {
             ingredientGameObjects.Add(ingredientGameObject);
         }
-        ingredientGameObject.GetComponent<IngredientRoasting>().SetRoastingBarActive(true);
+        foreach(IIngredientAddRemoveObserver observer in GetComponents<IIngredientAddRemoveObserver>())
+        {
+            observer.IngredientAdded(brewingIngredient);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -52,6 +55,9 @@ public class IngredientHolder : MonoBehaviour
         {
             ingredientGameObjects.Remove(ingredientGameObject);
         }
-        ingredientGameObject.GetComponent<IngredientRoasting>().SetRoastingBarActive(false);
+        foreach (IIngredientAddRemoveObserver observer in GetComponents<IIngredientAddRemoveObserver>())
+        {
+            observer.IngredientRemoved(brewingIngredient);
+        }
     }
 }
