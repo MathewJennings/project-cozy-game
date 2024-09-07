@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class IngredientReceiver : MonoBehaviour
+public class IngredientHolder : MonoBehaviour
 {
     [SerializeField]
     private GameObject ingredientsGameObject;
@@ -13,6 +13,11 @@ public class IngredientReceiver : MonoBehaviour
     private void Start()
     {
         brewingIngredients = new();
+    }
+
+    public List<BrewingIngredient> GetBrewingIngredients()
+    {
+        return brewingIngredients;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

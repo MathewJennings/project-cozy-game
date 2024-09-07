@@ -21,6 +21,16 @@ public class ShelfIngredientSpawner : MonoBehaviour
 
     private List<GameObject> shelfIngredients = new();
 
+    public GameObject GetShelfBackground()
+    {
+        return backgroundObject;
+    }
+
+    public float GetTargetSpriteSize()
+    {
+        return targetSizeInPixels;
+    }
+
     public void RemoveShelfIngredient(GameObject shelfIngredient)
     {
         if (shelfIngredients.Contains(shelfIngredient))
@@ -72,29 +82,8 @@ public class ShelfIngredientSpawner : MonoBehaviour
     {
         GameObject shelfIngredient = Instantiate(brewingIngredientPrefab, ingredientsObject.transform);
         shelfIngredients.Add(shelfIngredient);
-        shelfIngredient.GetComponent<BrewingIngredient>().ingredient = ingredient;
-        SetIngredientSprite(shelfIngredient, ingredient.uiSprite);
-        PrepareIngredientDragHandler(shelfIngredient);
-    }
-
-    private void SetIngredientSprite(GameObject shelfIngredient, Sprite sprite)
-    {
-        SpriteRenderer ingredientSpriteRenderer = shelfIngredient.GetComponent<SpriteRenderer>();
-        ingredientSpriteRenderer.sprite = sprite;
-        shelfIngredient.name = sprite.name;
-
-        float width = ingredientSpriteRenderer.sprite.rect.width;
-        float targetScale = targetSizeInPixels / width;
-        shelfIngredient.transform.localScale = new Vector3(targetScale, targetScale, 1f);
-        shelfIngredient.GetComponent<BoxCollider2D>().size = new Vector2(1/targetScale, 1/targetScale);
-        shelfIngredient.GetComponent<Rigidbody2D>().gravityScale = 0f;
-    }
-
-    private void PrepareIngredientDragHandler(GameObject shelfIngredient)
-    {
-        ShelfIngredientDragHandler shelfIngredientDragHandler = shelfIngredient.GetComponent<ShelfIngredientDragHandler>();
-        shelfIngredientDragHandler.SetShelf(backgroundObject);
-        shelfIngredientDragHandler.SetShelfIngredientSpawner(this);
+        BrewingIngredient brewingIngredient = shelfIngredient.GetComponent<BrewingIngredient>();
+        brewingIngredient.Initialize(ingredient, this);
     }
 
     private void PositionShelfIngredients()
