@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8797155598123373194}
   - component: {fileID: -6685734092744344873}
   - component: {fileID: 8358838469305807304}
+  - component: {fileID: -6755655432000735287}
   - component: {fileID: 7882558975462679725}
   m_Layer: 0
-  m_Name: ShelfIngredient
+  m_Name: Brewing Ingredient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,6 +160,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-6755655432000735287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5914312654717801556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0717e01fd4165d4f826a9e48de836da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7882558975462679725
 MonoBehaviour:
   m_ObjectHideFlags: 0

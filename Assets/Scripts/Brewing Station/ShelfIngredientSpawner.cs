@@ -11,7 +11,7 @@ public class ShelfIngredientSpawner : MonoBehaviour
     private GameObject ingredientsObject;
 
     [SerializeField]
-    private GameObject shelfIngredientPrefab;
+    private GameObject brewingIngredientPrefab;
 
     [SerializeField]
     private Inventory playerInventory;
@@ -61,18 +61,19 @@ public class ShelfIngredientSpawner : MonoBehaviour
             InventoryItem inventoryItem = playerInventory.Get(i).GetInventoryItem();
             if (inventoryItem is Ingredient)
             {
-                SpawnShelfIngredient(inventoryItem);
+                SpawnShelfIngredient(inventoryItem as Ingredient);
             }
         }
         PositionShelfIngredients();
         backgroundObject.transform.localScale = new Vector3(shelfIngredients.Count, 1, 1);
     }
 
-    private void SpawnShelfIngredient(InventoryItem inventoryItem)
+    private void SpawnShelfIngredient(Ingredient ingredient)
     {
-        GameObject shelfIngredient = Instantiate(shelfIngredientPrefab, ingredientsObject.transform);
+        GameObject shelfIngredient = Instantiate(brewingIngredientPrefab, ingredientsObject.transform);
         shelfIngredients.Add(shelfIngredient);
-        SetIngredientSprite(shelfIngredient, inventoryItem.uiSprite);
+        shelfIngredient.GetComponent<BrewingIngredient>().ingredient = ingredient;
+        SetIngredientSprite(shelfIngredient, ingredient.uiSprite);
         PrepareIngredientDragHandler(shelfIngredient);
     }
 

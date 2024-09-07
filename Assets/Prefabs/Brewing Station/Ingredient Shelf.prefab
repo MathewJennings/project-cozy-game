@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundObject: {fileID: 5917419852196848642}
   ingredientsObject: {fileID: 8300606548774772166}
-  shelfIngredientPrefab: {fileID: 5914312654717801556, guid: 3ccca9e64b2514c42b702b4fc657ecc1, type: 3}
+  brewingIngredientPrefab: {fileID: 5914312654717801556, guid: 3ccca9e64b2514c42b702b4fc657ecc1, type: 3}
   playerInventory: {fileID: 11400000, guid: 668ab75e7c3e91944b2497bd127f7178, type: 2}
   targetSizeInPixels: 256
 --- !u!1 &5917419852196848642
