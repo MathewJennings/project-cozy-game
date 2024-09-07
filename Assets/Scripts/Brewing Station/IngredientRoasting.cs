@@ -47,6 +47,16 @@ public class IngredientRoasting : MonoBehaviour
         roastingBarBackground.SetActive(isActive);
     }
 
+    public bool GetIsBurnt()
+    {
+        return roastingPercentage > burntPercentageMark;
+    }
+
+    public bool GetIsRoasted()
+    {
+        return roastingPercentage > roastedPercentageMark && !GetIsBurnt();
+    }
+
     private void Start()
     {
         roastingBarFillRectTransform = roastingBarFill.GetComponent<RectTransform>();

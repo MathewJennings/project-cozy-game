@@ -6,10 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(IngredientDragHandler))]
 public class BrewingIngredient : MonoBehaviour
 {
-    public Ingredient ingredient;
-
     [SerializeField]
     private GameObject spriteGameObject;
+
+    private Ingredient ingredient;
 
     public void Initialize(Ingredient ingredient, ShelfIngredientSpawner shelfIngredientSpawner)
     {
