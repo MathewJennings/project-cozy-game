@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +30,12 @@ public class IngredientHolder : MonoBehaviour
         }
         
         brewingIngredient.transform.parent = ingredientsHolderGameObject.transform;
-        if (!ingredientGameObjects.Contains(brewingIngredient.gameObject))
+        GameObject ingredientGameObject = brewingIngredient.gameObject;
+        if (!ingredientGameObjects.Contains(ingredientGameObject))
         {
-            ingredientGameObjects.Add(brewingIngredient.gameObject);
+            ingredientGameObjects.Add(ingredientGameObject);
         }
+        ingredientGameObject.GetComponent<IngredientRoasting>().SetRoastingBarActive(true);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -44,9 +47,11 @@ public class IngredientHolder : MonoBehaviour
         }
 
         brewingIngredient.transform.parent = null;
-        if (ingredientGameObjects.Contains(brewingIngredient.gameObject))
+        GameObject ingredientGameObject = brewingIngredient.gameObject;
+        if (ingredientGameObjects.Contains(ingredientGameObject))
         {
-            ingredientGameObjects.Remove(brewingIngredient.gameObject);
+            ingredientGameObjects.Remove(ingredientGameObject);
         }
+        ingredientGameObject.GetComponent<IngredientRoasting>().SetRoastingBarActive(false);
     }
 }

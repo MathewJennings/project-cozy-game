@@ -40,14 +40,21 @@ public class IngredientRoasting : MonoBehaviour
     public void SetIsRoasting(bool isRoasting)
     {
         this.isRoasting = isRoasting;
-        roastingBarBackground.SetActive(isRoasting);
+    }
+
+    public void SetRoastingBarActive(bool isActive)
+    {
+        roastingBarBackground.SetActive(isActive);
     }
 
     private void Start()
     {
-        roastingBarBackground.SetActive(false);
         roastingBarFillRectTransform = roastingBarFill.GetComponent<RectTransform>();
         roastingBarFillImage = roastingBarFill.GetComponent<Image>();
+
+        roastingPercentage = 0;
+        SetRoastingBarPercentage();
+        SetRoastingBarActive(false);
 
         InitializeLine(roastedLine, roastedPercentageMark);
         InitializeLine(burntLine, burntPercentageMark);
