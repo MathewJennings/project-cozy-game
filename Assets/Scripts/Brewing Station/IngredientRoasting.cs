@@ -7,6 +7,9 @@ public class IngredientRoasting : MonoBehaviour
 {
 
     [SerializeField]
+    private SpriteRenderer spriteRenderer;
+
+    [SerializeField]
     private GameObject roastingBarBackground;
 
     [SerializeField]
@@ -27,16 +30,18 @@ public class IngredientRoasting : MonoBehaviour
     [SerializeField]
     private float burntPercentageMark;
 
-    private static Color UNDER_ROASTED_COLOR = new Color32(0xE2, 0xBA, 0x04, 0xFF);
-    private static Color ROASTED_COLOR = new Color32(0x06, 0x70, 0x00, 0xFF);
-    private static Color BURNT_COLOR = new Color32(0xA7, 0x00, 0x00, 0xFF);
+    private static Color UNDER_ROASTED_BAR_COLOR = new Color32(0xE2, 0xBA, 0x04, 0xFF);
+    private static Color ROASTED_BAR_COLOR = new Color32(0x06, 0x70, 0x00, 0xFF);
+    private static Color ROASTED_INGREDIENT_COLOR = new Color32(0xFC, 0xCD, 0x9E, 0xFF);
+    private static Color BURNT_BAR_COLOR = new Color32(0xA7, 0x00, 0x00, 0xFF);
+    private static Color BURNT_INGREDIENT_COLOR = new Color32(0x6A, 0x56, 0x43, 0xFF);
 
     private bool isRoasting;
     private float roastingPercentage;
 
     private RectTransform roastingBarFillRectTransform;
     private Image roastingBarFillImage;
-
+    
     public void SetIsRoasting(bool isRoasting)
     {
         this.isRoasting = isRoasting;
@@ -92,15 +97,17 @@ public class IngredientRoasting : MonoBehaviour
         roastingBarFillRectTransform.sizeDelta = new Vector2(clampedDecimal, roastingBarFillRectTransform.sizeDelta.y);
         if (clampedDecimal < roastedPercentageMark)
         {
-            roastingBarFillImage.color = UNDER_ROASTED_COLOR;
+            roastingBarFillImage.color = UNDER_ROASTED_BAR_COLOR;
         }
         else if (clampedDecimal < burntPercentageMark)
         {
-            roastingBarFillImage.color = ROASTED_COLOR;
+            roastingBarFillImage.color = ROASTED_BAR_COLOR;
+            spriteRenderer.color = ROASTED_INGREDIENT_COLOR;
         }
         else
         {
-            roastingBarFillImage.color = BURNT_COLOR;
+            roastingBarFillImage.color = BURNT_BAR_COLOR;
+            spriteRenderer.color = BURNT_INGREDIENT_COLOR;
         }
     }
 }
