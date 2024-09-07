@@ -807,7 +807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 51
   m_MaxRayIntersections: 0
 --- !u!1 &1258384540
 GameObject:
@@ -1097,7 +1097,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1108,7 +1108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.7}
   m_EdgeRadius: 0
 --- !u!1 &1638345300
 GameObject:
@@ -1244,56 +1244,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1638345300}
   m_CullTransparentMesh: 1
---- !u!1 &1765257835 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5917419852196848642, guid: a5ac1462d1ae27a48b3d94bf07916724, type: 3}
-  m_PrefabInstance: {fileID: 4371629811644958339}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1765257838
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765257835}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &1989732981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,6 +1352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roastingSpeed: 10
+  roastedPercentage: 0.65
+  burntPercentage: 0.85
 --- !u!1 &1994597893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,10 +1511,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5917419852196848642, guid: a5ac1462d1ae27a48b3d94bf07916724, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1765257838}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5ac1462d1ae27a48b3d94bf07916724, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
