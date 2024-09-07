@@ -24,12 +24,13 @@ public class Roaster : MonoBehaviour
         {
             roastingPercentage = 0;
         }
-        foreach (BrewingIngredient brewingIngredient in GetComponent<IngredientHolder>().GetBrewingIngredients())
+        foreach (GameObject ingredientGameObject in GetComponent<IngredientHolder>().GetIngredientsGameObjects())
         {
-            brewingIngredient.SetRoastingBarActive(isRoasting);
-            brewingIngredient.SetRoastingBarPercentage(roastingPercentage);
-            brewingIngredient.SetRoastedPercentage(roastedPercentage);
-            brewingIngredient.SetBurntPercentage(burntPercentage);
+            IngredientRoasting ingredientRoasting = ingredientGameObject.GetComponent<IngredientRoasting>();
+            ingredientRoasting.SetRoastingBarActive(isRoasting);
+            ingredientRoasting.SetRoastingBarPercentage(roastingPercentage);
+            ingredientRoasting.SetRoastedPercentage(roastedPercentage);
+            ingredientRoasting.SetBurntPercentage(burntPercentage);
         }
     }
 
@@ -38,9 +39,10 @@ public class Roaster : MonoBehaviour
         if (isRoasting)
         {
             roastingPercentage += Time.deltaTime * roastingSpeed;
-            foreach (BrewingIngredient brewingIngredient in GetComponent<IngredientHolder>().GetBrewingIngredients())
+            foreach (GameObject ingredientGameObject in GetComponent<IngredientHolder>().GetIngredientsGameObjects())
             {
-                brewingIngredient.SetRoastingBarPercentage(roastingPercentage);
+                IngredientRoasting ingredientRoasting = ingredientGameObject.GetComponent<IngredientRoasting>();
+                ingredientRoasting.SetRoastingBarPercentage(roastingPercentage);
             }
         }
     }

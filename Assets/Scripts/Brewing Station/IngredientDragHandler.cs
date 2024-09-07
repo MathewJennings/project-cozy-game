@@ -29,13 +29,11 @@ public class IngredientDragHandler : MonoBehaviour, IBeginDragHandler, IDragHand
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
         gameObject.transform.position = Camera.main.ScreenToWorldPoint(eventData.position) + mouseClickOffset;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("End Drag");
         GetComponent<BoxCollider2D>().enabled = true;
         if (shelfBounds.Intersects(this.GetComponent<BoxCollider2D>().bounds))
         {
@@ -46,10 +44,5 @@ public class IngredientDragHandler : MonoBehaviour, IBeginDragHandler, IDragHand
             shelfIngredientSpawner.RemoveShelfIngredient(this.gameObject);
             GetComponent<Rigidbody2D>().gravityScale = 1;
         }
-    }
-
-    static bool BoundsIsEncapsulated(Bounds Encapsulator, Bounds Encapsulating)
-    {
-        return Encapsulator.Intersects(Encapsulating);
     }
 }

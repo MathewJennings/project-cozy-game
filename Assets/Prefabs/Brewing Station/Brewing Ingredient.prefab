@@ -538,10 +538,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredient: {fileID: 0}
   spriteGameObject: {fileID: 5620297324072483150}
-  roastingBarBackground: {fileID: 4660550934621144239}
-  roastingBarFill: {fileID: 7329323322688037377}
-  roastedLine: {fileID: 2723883549053373998}
-  burntLine: {fileID: 5105948861791258265}
 --- !u!114 &7882558975462679725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +562,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1411f66eb095c44481008f9e7431796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roastingBarBackground: {fileID: 4660550934621144239}
+  roastingBarFill: {fileID: 7329323322688037377}
+  roastedLine: {fileID: 2723883549053373998}
+  burntLine: {fileID: 5105948861791258265}
 --- !u!1 &7329323322688037377
 GameObject:
   m_ObjectHideFlags: 0

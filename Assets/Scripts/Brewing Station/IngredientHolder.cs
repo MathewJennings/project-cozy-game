@@ -6,18 +6,18 @@ using UnityEngine;
 public class IngredientHolder : MonoBehaviour
 {
     [SerializeField]
-    private GameObject ingredientsGameObject;
+    private GameObject ingredientsHolderGameObject;
 
-    private List<BrewingIngredient> brewingIngredients;
+    private List<GameObject> ingredientGameObjects;
 
     private void Start()
     {
-        brewingIngredients = new();
+        ingredientGameObjects = new();
     }
 
-    public List<BrewingIngredient> GetBrewingIngredients()
+    public List<GameObject> GetIngredientsGameObjects()
     {
-        return brewingIngredients;
+        return ingredientGameObjects;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -28,10 +28,10 @@ public class IngredientHolder : MonoBehaviour
             return;
         }
         
-        brewingIngredient.transform.parent = ingredientsGameObject.transform;
-        if (!brewingIngredients.Contains(brewingIngredient))
+        brewingIngredient.transform.parent = ingredientsHolderGameObject.transform;
+        if (!ingredientGameObjects.Contains(brewingIngredient.gameObject))
         {
-            brewingIngredients.Add(brewingIngredient);
+            ingredientGameObjects.Add(brewingIngredient.gameObject);
         }
     }
 
@@ -44,9 +44,9 @@ public class IngredientHolder : MonoBehaviour
         }
 
         brewingIngredient.transform.parent = null;
-        if (brewingIngredients.Contains(brewingIngredient))
+        if (ingredientGameObjects.Contains(brewingIngredient.gameObject))
         {
-            brewingIngredients.Remove(brewingIngredient);
+            ingredientGameObjects.Remove(brewingIngredient.gameObject);
         }
     }
 }
