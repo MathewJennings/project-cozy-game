@@ -8,6 +8,12 @@ public class Roaster : MonoBehaviour
     [SerializeField]
     private float roastingSpeed = 1f;
 
+    [SerializeField]
+    private float roastedPercentage = .65f;
+
+    [SerializeField]
+    private float burntPercentage = .85f;
+
     private bool isRoasting;
     private float roastingPercentage;
 
@@ -22,6 +28,8 @@ public class Roaster : MonoBehaviour
         {
             brewingIngredient.SetRoastingBarActive(isRoasting);
             brewingIngredient.SetRoastingBarPercentage(roastingPercentage);
+            brewingIngredient.SetRoastedPercentage(roastedPercentage);
+            brewingIngredient.SetBurntPercentage(burntPercentage);
         }
     }
 
