@@ -9,7 +9,6 @@ public class BrewingStationInteraction : MonoBehaviour, IInteractable
     private GameObject brewingInterface;
 
     private bool isBrewingInterfaceEnabled;
-    private ShelfIngredientDragHandler[] inventoryBarBrewingStationDragHandlers;
 
     void Start()
     {

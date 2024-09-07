@@ -5,7 +5,7 @@ using UnityEngine.U2D;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(ShelfIngredientDragHandler))]
+[RequireComponent(typeof(IngredientDragHandler))]
 public class BrewingIngredient : MonoBehaviour
 {
     public Ingredient ingredient;
@@ -47,7 +47,7 @@ public class BrewingIngredient : MonoBehaviour
         SpriteRenderer spriteRenderer = InitializeSprite(ingredient);
         InitializeScale(spriteRenderer, shelfIngredientSpawner.GetTargetSpriteSize());
         GetComponent<Rigidbody2D>().gravityScale = 0f;
-        GetComponent<ShelfIngredientDragHandler>().SetShelfIngredientSpawner(shelfIngredientSpawner);
+        GetComponent<IngredientDragHandler>().SetShelfIngredientSpawner(shelfIngredientSpawner);
     }
 
     private SpriteRenderer InitializeSprite(Ingredient ingredient)

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class ShelfIngredientDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class IngredientDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private ShelfIngredientSpawner shelfIngredientSpawner;
     private Bounds shelfBounds;
