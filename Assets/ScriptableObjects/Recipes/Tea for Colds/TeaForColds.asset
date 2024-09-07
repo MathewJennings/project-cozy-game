@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4007b9e07b17b3341ae8d2eaef6e9abe, type: 3}
   m_Name: TeaForColds
   m_EditorClassIdentifier: 
-  title: Recipe 2
-  text: Do the thing
-  isRevealed: 0
-  unrevealedTitle: ?????? ?
-  unrevealedText: ?? ??? ?????
+  isUnlocked: 1
   recipePagePrefab: {fileID: 3452793082635967192, guid: 64002f225502df94c8207351b93db3c9, type: 3}
+  title: Tea for Colds
+  text: Add crushed fresh ginger and chopped fresh turmeric to simmering water.\n\nOne
+    steeped, add honey and stir until dissolved.\n\nAdd crushed lemon.
+  ingredients:
+  - {fileID: 11400000, guid: f9aa97ea832c6e345a655ff8c7e62127, type: 2}
+  - {fileID: 11400000, guid: 52762804b1cf1d0459b5b5ebf85b89b6, type: 2}
+  - {fileID: 11400000, guid: 021d98c3bfb264146a8895bf326849a1, type: 2}
+  - {fileID: 11400000, guid: 5ecf043ad25d453458972f32520fc601, type: 2}
+  ingredientRevealed: 01010101
