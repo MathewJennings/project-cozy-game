@@ -13,6 +13,9 @@ public class Oven : MonoBehaviour
     [SerializeField]
     private Transform trayPointIn;
 
+    [SerializeField]
+    private IngredientHolder ingredientHolder;
+
     private bool isTrayInOven;
 
     private bool isSlerping;
@@ -33,6 +36,7 @@ public class Oven : MonoBehaviour
         {
             startPosition = trayPointIn.position;
             targetPosition = trayPointOut.position;
+            StopBaking();
         }
         else
         {
@@ -46,12 +50,38 @@ public class Oven : MonoBehaviour
         if (isSlerping)
         {
             slerpPercentage += Time.deltaTime / timeToSlerp;
-            tray.transform.position = Vector3.Lerp(startPosition, targetPosition, slerpPercentage);
+            Vector3 newPosition = Vector3.Slerp(startPosition, targetPosition, slerpPercentage);
+            Vector3 delta = newPosition - tray.transform.position;
+            tray.transform.position = newPosition;
+            foreach (GameObject gameObject in ingredientHolder.GetIngredientsGameObjects())
+            {
+                gameObject.transform.Translate(delta);
+            }
             if (slerpPercentage >= 1f)
             {
-                isTrayInOven = !isTrayInOven;
                 isSlerping = false;
+                isTrayInOven = !isTrayInOven;
+                if (isTrayInOven)
+                {
+                    StartBaking();
+                }
             }
+        }
+    }
+
+    private void StartBaking()
+    {
+        foreach(GameObject gameObject in ingredientHolder.GetIngredientsGameObjects())
+        {
+            gameObject.GetComponent<IngredientBaking>().StartBaking();
+        }
+    }
+
+    private void StopBaking()
+    {
+        foreach (GameObject gameObject in ingredientHolder.GetIngredientsGameObjects())
+        {
+            gameObject.GetComponent<IngredientBaking>().StopBaking();
         }
     }
 }

@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: -6755655432000735287}
   - component: {fileID: 7882558975462679725}
   - component: {fileID: 7226277888239078864}
+  - component: {fileID: 2709456568664637483}
   m_Layer: 0
   m_Name: Brewing Ingredient
   m_TagString: Untagged
@@ -569,6 +570,19 @@ MonoBehaviour:
   roastingSpeed: 10
   roastedPercentageMark: 0.65
   burntPercentageMark: 0.85
+--- !u!114 &2709456568664637483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5914312654717801556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165b7ebd9dee9bf4398ad41819c51162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1135531568145622412}
 --- !u!1 &7329323322688037377
 GameObject:
   m_ObjectHideFlags: 0
