@@ -79,29 +79,47 @@ public abstract class IngredientBarManipulator : MonoBehaviour
     {
         if (isBarFilling)
         {
-            barFillPercentage += Time.deltaTime * barFillSpeed;
+            bool wasOverdone = GetIsOverdone();
+            bool wasComplete = GetIsComplete();
+            barFillPercentage = Mathf.Clamp(barFillPercentage + Time.deltaTime * barFillSpeed, 0, 1);
+            if (!wasOverdone && GetIsOverdone())
+            {
+                DarkenSpriteWithColor(spriteRenderer, OVERDONE_INGREDIENT_COLOR);
+            }
+            if (!wasComplete && GetIsComplete())
+            {
+                DarkenSpriteWithColor(spriteRenderer, TARGET_INGREDIENT_COLOR);
+            }
             SetBarPercentage();
         }
     }
 
+    private void DarkenSpriteWithColor(SpriteRenderer spriteRenderer, Color newColor)
+    {
+        Color currentColor = spriteRenderer.color;
+        spriteRenderer.color = new Color(
+            currentColor.r - (1 - newColor.r),
+            currentColor.g - (1 - newColor.g),
+            currentColor.b - (1 - newColor.b),
+            currentColor.a - (1 - newColor.a)
+        );
+    }
+
     private void SetBarPercentage()
     {
-        float bakingDecimal = barFillPercentage / 100;
-        float clampedDecimal = Mathf.Clamp(bakingDecimal, 0, 1);
+        float clampedDecimal = Mathf.Clamp(barFillPercentage, 0, 1);
         barFillRectTransform.sizeDelta = new Vector2(clampedDecimal, barFillRectTransform.sizeDelta.y);
-        if (clampedDecimal < targetPercentageMark)
+        if (GetIsOverdone())
         {
-            barFillImage.color = UNDER_TARGET_BAR_COLOR;
+            barFillImage.color = OVERDONE_BAR_COLOR;
         }
-        else if (clampedDecimal < overdonePercentageMark)
+        else if (GetIsComplete())
         {
             barFillImage.color = TARGET_BAR_COLOR;
-            spriteRenderer.color = TARGET_INGREDIENT_COLOR;
         }
         else
         {
-            barFillImage.color = OVERDONE_BAR_COLOR;
-            spriteRenderer.color = OVERDONE_INGREDIENT_COLOR;
+            barFillImage.color = UNDER_TARGET_BAR_COLOR;
         }
     }
 }

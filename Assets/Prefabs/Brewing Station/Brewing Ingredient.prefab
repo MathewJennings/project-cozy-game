@@ -340,7 +340,7 @@ MonoBehaviour:
   barFill: {fileID: 7329323322688037377}
   targetLine: {fileID: 2723883549053373998}
   overdoneLine: {fileID: 5105948861791258265}
-  barFillSpeed: 10
+  barFillSpeed: 0.1
   targetPercentageMark: 0.65
   overdonePercentageMark: 0.85
 --- !u!114 &2709456568664637483
@@ -360,7 +360,7 @@ MonoBehaviour:
   barFill: {fileID: 3916332212397196079}
   targetLine: {fileID: 8512448129039068928}
   overdoneLine: {fileID: 1528020656480085943}
-  barFillSpeed: 10
+  barFillSpeed: 0.1
   targetPercentageMark: 0.65
   overdonePercentageMark: 0.85
   ingredientDragHandler: {fileID: 7882558975462679725}
