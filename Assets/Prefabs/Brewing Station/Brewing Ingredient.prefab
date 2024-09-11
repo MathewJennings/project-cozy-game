@@ -336,13 +336,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1135531568145622412}
-  roastingBarBackground: {fileID: 4660550934621144239}
-  roastingBarFill: {fileID: 7329323322688037377}
-  roastedLine: {fileID: 2723883549053373998}
-  burntLine: {fileID: 5105948861791258265}
-  roastingSpeed: 10
-  roastedPercentageMark: 0.65
-  burntPercentageMark: 0.85
+  barBackground: {fileID: 4660550934621144239}
+  barFill: {fileID: 7329323322688037377}
+  targetLine: {fileID: 2723883549053373998}
+  overdoneLine: {fileID: 5105948861791258265}
+  barFillSpeed: 10
+  targetPercentageMark: 0.65
+  overdonePercentageMark: 0.85
 --- !u!114 &2709456568664637483
 MonoBehaviour:
   m_ObjectHideFlags: 0

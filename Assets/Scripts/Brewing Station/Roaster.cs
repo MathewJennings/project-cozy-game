@@ -20,7 +20,6 @@ public class Roaster : MonoBehaviour, IIngredientAddRemoveObserver
 
     public void IngredientAdded(BrewingIngredient brewingIngredient)
     {
-
         IngredientRoasting ingredientRoasting = brewingIngredient.GetComponent<IngredientRoasting>();
         ingredientRoasting.SetRoastingBarActive(true);
         ingredientRoasting.SetIsRoasting(isRoasting);
@@ -31,6 +30,5 @@ public class Roaster : MonoBehaviour, IIngredientAddRemoveObserver
         IngredientRoasting ingredientRoasting = brewingIngredient.GetComponent<IngredientRoasting>();
         ingredientRoasting.SetRoastingBarActive(false);
         ingredientRoasting.SetIsRoasting(false);
-
     }
 }
