@@ -22,7 +22,7 @@ public class IngredientRoasting : MonoBehaviour
     private GameObject burntLine;
     
     [SerializeField]
-    private float roastingSpeed = 10f;
+    private float roastingSpeed;
 
     [SerializeField]
     private float roastedPercentageMark;
